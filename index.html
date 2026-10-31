@@ -2,205 +2,679 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#06152f">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#071832">
+<title>ZUI — Onde se vê algo novo!</title>
 
-  <title>ZUI - Onde se vê algo novo!</title>
-
-  <style>
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      margin: 0;
-      min-height: 100vh;
-      font-family: Arial, Helvetica, sans-serif;
-      background: linear-gradient(135deg, #06152f, #123e7a);
-      color: white;
-      text-align: center;
-    }
-
-    header {
-      padding: 35px 20px 45px;
-    }
-
-    .logo-oficial {
-      display: block;
-      width: 100%;
-      max-width: 850px;
-      height: auto;
-      margin: 0 auto;
-      border-radius: 16px;
-    }
-
-    .frase {
-      font-size: 22px;
-      font-weight: 500;
-      color: #dbe8ff;
-      margin: 25px 0 10px;
-    }
-
-    p {
-      color: #dbe8ff;
-      line-height: 1.7;
-    }
-
-    .botao {
-      display: inline-block;
-      margin-top: 22px;
-      padding: 16px 34px;
-      border-radius: 30px;
-      background: linear-gradient(135deg, #f5bc47, #e8a52a);
-      color: #071b38;
-      font-weight: bold;
-      text-decoration: none;
-      box-shadow: 0 5px 20px #00000030;
-      transition: transform 0.2s;
-    }
-
-    .botao:hover {
-      transform: scale(1.05);
-    }
-
-    section {
-      padding: 35px 20px 65px;
-    }
-
-    section h2 {
-      font-size: 28px;
-    }
-
-    .cards {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 18px;
-      margin: 35px auto;
-      max-width: 950px;
-    }
-
-    .card {
-      flex: 1 1 190px;
-      max-width: 300px;
-      background: #ffffff13;
-      border: 1px solid #ffffff30;
-      border-radius: 18px;
-      padding: 30px 20px;
-      transition: transform 0.2s;
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-      border-color: #f5bc47;
-    }
-
-    .card .icone {
-      font-size: 36px;
-    }
-
-    .card h3 {
-      color: #f5bc47;
-      font-size: 21px;
-    }
-
-    .card p {
-      font-size: 15px;
-    }
-
-    footer {
-      padding: 30px 20px 45px;
-      color: #b9c9e2;
-      border-top: 1px solid #ffffff20;
-    }
-
-    @media (max-width: 600px) {
-      header {
-        padding: 20px 12px 35px;
-      }
-
-      .logo-oficial {
-        border-radius: 10px;
-      }
-
-      .frase {
-        font-size: 18px;
-      }
-
-      .card {
-        flex-basis: 140px;
-      }
-    }
-  </style>
+<style>
+:root {
+  --azul:#071832;
+  --azul2:#102d59;
+  --azul3:#173e76;
+  --ouro:#f5bd48;
+  --texto:#eef5ff;
+  --suave:#b7c9e4;
+  --linha:#ffffff22;
+}
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  margin:0;
+  background:linear-gradient(125deg,#061329,#123568);
+  color:var(--texto);
+  font-family:Arial,Helvetica,sans-serif;
+  min-height:100vh;
+}
+button,input,textarea { font:inherit; }
+button { cursor:pointer; }
+button:focus-visible,input:focus-visible,
+textarea:focus-visible {
+  outline:2px solid var(--ouro);
+  outline-offset:2px;
+}
+.topo {
+  background:#071832f5;
+  border-bottom:1px solid var(--linha);
+  position:sticky;
+  top:0;
+  z-index:10;
+  padding:12px 5%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
+}
+.marca {
+  color:var(--ouro);
+  font-size:32px;
+  font-weight:900;
+  letter-spacing:2px;
+}
+.slogan {
+  font-size:12px;
+  color:var(--suave);
+}
+.status {
+  border:1px solid #f5bd4870;
+  color:var(--ouro);
+  border-radius:20px;
+  padding:9px 12px;
+  font-size:12px;
+}
+.layout {
+  max-width:1250px;
+  margin:25px auto;
+  padding:0 18px;
+  display:grid;
+  grid-template-columns:220px minmax(0,1fr) 245px;
+  gap:20px;
+  align-items:start;
+}
+.painel {
+  background:#102950;
+  border:1px solid var(--linha);
+  border-radius:18px;
+  padding:18px;
+  margin-bottom:18px;
+  box-shadow:0 8px 25px #00000013;
+}
+.menu {
+  position:sticky;
+  top:88px;
+}
+.menu button {
+  display:block;
+  width:100%;
+  text-align:left;
+  background:transparent;
+  color:white;
+  padding:14px;
+  border:0;
+  border-radius:12px;
+  margin:5px 0;
+}
+.menu button:hover,
+.menu button.ativo {
+  background:#214779;
+  color:var(--ouro);
+}
+.logo {
+  display:block;
+  width:100%;
+  max-width:420px;
+  border-radius:12px;
+  margin:auto;
+}
+.apresentacao {
+  text-align:center;
+  padding:18px;
+}
+.apresentacao p {
+  color:var(--suave);
+  margin-bottom:0;
+}
+h2 { font-size:22px; margin:0 0 16px; }
+h3 { font-size:17px; margin:0 0 10px; }
+p { line-height:1.55; }
+.muted { color:var(--suave); }
+.aviso {
+  color:var(--ouro);
+  font-size:12px;
+  line-height:1.5;
+}
+textarea {
+  width:100%;
+  min-height:105px;
+  background:#071b38;
+  color:white;
+  padding:15px;
+  border:1px solid #47618b;
+  border-radius:12px;
+  resize:vertical;
+}
+.acoes {
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  margin-top:12px;
+}
+.dourado {
+  background:var(--ouro);
+  color:#081b36;
+  border:0;
+  border-radius:25px;
+  padding:12px 23px;
+  font-weight:bold;
+}
+.dourado:hover { background:#ffd479; }
+.post {
+  background:#102950;
+  border:1px solid var(--linha);
+  border-radius:18px;
+  padding:20px;
+  margin-bottom:16px;
+}
+.autor {
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-bottom:15px;
+}
+.avatar {
+  width:43px;
+  height:43px;
+  flex-shrink:0;
+  border-radius:50%;
+  background:linear-gradient(135deg,#146cde,#f5bd48);
+  display:grid;
+  place-items:center;
+  color:white;
+  font-weight:bold;
+}
+.nome { font-weight:bold; }
+.data { font-size:12px; color:var(--suave); }
+.conteudo {
+  white-space:pre-wrap;
+  overflow-wrap:anywhere;
+  line-height:1.65;
+}
+.botoes {
+  display:flex;
+  flex-wrap:wrap;
+  gap:9px;
+  border-top:1px solid var(--linha);
+  padding-top:15px;
+  margin-top:16px;
+}
+.botoes button {
+  background:#1b3b6a;
+  color:white;
+  border:1px solid #ffffff18;
+  padding:10px 13px;
+  border-radius:10px;
+}
+.botoes button:hover,
+.botoes button.marcado {
+  color:var(--ouro);
+  border-color:var(--ouro);
+}
+.tag {
+  display:inline-block;
+  background:#204578;
+  border-radius:30px;
+  padding:9px 12px;
+  margin:4px;
+  font-size:13px;
+}
+.busca {
+  width:100%;
+  background:#071b38;
+  border:1px solid #49658d;
+  padding:13px;
+  border-radius:12px;
+  color:white;
+}
+.area { display:none; }
+.area.visivel { display:block; }
+.destaque {
+  color:var(--ouro);
+}
+.vazio {
+  text-align:center;
+  padding:30px;
+  color:var(--suave);
+}
+.comunidade {
+  background:#173b70;
+  padding:17px;
+  margin:12px 0;
+  border-radius:12px;
+}
+.rodape {
+  text-align:center;
+  padding:30px 15px;
+  color:var(--suave);
+  font-size:13px;
+}
+@media(max-width:1000px) {
+  .layout { grid-template-columns:190px minmax(0,1fr); }
+  .lateral { display:none; }
+}
+@media(max-width:650px) {
+  .topo { padding:12px; }
+  .marca { font-size:26px; }
+  .layout {
+    display:block;
+    padding:0 12px;
+    margin:15px auto;
+  }
+  .menu {
+    position:static;
+    display:flex;
+    overflow-x:auto;
+    gap:5px;
+    padding:8px;
+  }
+  .menu button {
+    flex-shrink:0;
+    width:auto;
+    padding:12px;
+  }
+  .painel,.post { padding:15px; }
+  .status { font-size:11px; }
+}
+</style>
 </head>
 
 <body>
 
-  <header>
+<header class="topo">
+  <div>
+    <div class="marca">ZUI</div>
+    <div class="slogan">Onde se vê algo novo!</div>
+  </div>
+  <div class="status">Protótipo 1.1 • Grátis</div>
+</header>
 
-    <img
-      class="logo-oficial"
-      src="Logo%203D%20ZUI%20com%20%C3%93rbita%20Dourada.png"
-      alt="ZUI - Onde se vê algo novo!"
-    >
+<div class="layout">
 
-    <p class="frase">
-      Descubra. Compartilhe. Conecte-se.
-    </p>
+  <aside>
+    <nav class="painel menu" aria-label="Menu principal">
+      <button class="ativo" data-area="inicio">🏠 Início</button>
+      <button data-area="explorar">🔎 Explorar</button>
+      <button data-area="publicar">➕ Publicar</button>
+      <button data-area="comunidades">🌎 Comunidades</button>
+      <button data-area="perfil">👤 Meu perfil</button>
+    </nav>
+  </aside>
 
-    <a class="botao" href="#descobrir">
-      Conheça o ZUI
-    </a>
+  <main>
 
-  </header>
+    <section id="inicio" class="area visivel">
 
-  <section id="descobrir">
-
-    <h2>Um mundo de descobertas!</h2>
-
-    <p>
-      Uma nova maneira de compartilhar
-      o que você ama.
-    </p>
-
-    <div class="cards">
-
-      <div class="card">
-        <div class="icone">🎬</div>
-        <h3>Vídeos</h3>
-        <p>Compartilhe suas histórias.</p>
+      <div class="painel apresentacao">
+        <img class="logo"
+          src="Logo%203D%20ZUI%20com%20%C3%93rbita%20Dourada.png"
+          alt="ZUI — Onde se vê algo novo!">
+        <p>Descubra. Compartilhe. Conecte-se.</p>
       </div>
 
-      <div class="card">
-        <div class="icone">📸</div>
-        <h3>Fotos</h3>
-        <p>Mostre seu mundo.</p>
+      <div class="painel">
+        <h2>Compartilhe algo novo!</h2>
+        <textarea id="textoPost"
+          maxlength="2000"
+          placeholder="O que você gostaria de compartilhar hoje?"></textarea>
+
+        <div class="acoes">
+          <span class="muted">✍️ Publicação de texto</span>
+          <button class="dourado" id="publicarBtn">
+            Publicar no ZUI
+          </button>
+        </div>
+        <p class="aviso">
+          Demonstração: suas publicações ficam
+          somente neste navegador.
+        </p>
       </div>
 
-      <div class="card">
-        <div class="icone">📝</div>
-        <h3>Textos</h3>
-        <p>Compartilhe suas ideias.</p>
-      </div>
+      <h2>✨ Descobertas para você</h2>
+      <div id="feed"></div>
 
-      <div class="card">
-        <div class="icone">🌎</div>
-        <h3>Comunidades</h3>
-        <p>Conheça novas pessoas.</p>
-      </div>
+    </section>
 
+    <section id="explorar" class="area">
+      <div class="painel">
+        <h2>🔎 Explorar o ZUI</h2>
+        <p class="muted">
+          Descubra conteúdos e novas ideias.
+        </p>
+        <input class="busca" id="pesquisa"
+          placeholder="Pesquisar publicações...">
+      </div>
+      <div id="resultados"></div>
+    </section>
+
+    <section id="publicar" class="area">
+      <div class="painel">
+        <h2>➕ Criar publicação</h2>
+        <p class="muted">
+          Compartilhe uma descoberta, história
+          ou conhecimento com o ZUI.
+        </p>
+        <button class="dourado" id="irPublicar">
+          Escrever uma publicação
+        </button>
+        <p class="aviso">
+          Fotos e vídeos serão implementados
+          em uma próxima etapa.
+        </p>
+      </div>
+    </section>
+
+    <section id="comunidades" class="area">
+      <div class="painel">
+        <h2>🌎 Comunidades ZUI</h2>
+        <p class="muted">
+          Espaços para conectar pessoas
+          que compartilham interesses.
+        </p>
+        <div class="comunidade">💻 Tecnologia e inovação</div>
+        <div class="comunidade">🎨 Arte e criatividade</div>
+        <div class="comunidade">📚 Conhecimento e educação</div>
+        <div class="comunidade">🎬 Cinema e entretenimento</div>
+        <div class="comunidade">🌱 Natureza e descobertas</div>
+        <p class="aviso">
+          Comunidades ilustrativas. Ainda
+          não é possível participar delas.
+        </p>
+      </div>
+    </section>
+
+    <section id="perfil" class="area">
+      <div class="painel">
+        <h2>👤 Meu perfil</h2>
+        <div class="autor">
+          <div class="avatar">Z</div>
+          <div>
+            <div class="nome">Criador ZUI</div>
+            <div class="data">@criadorzui • Perfil demonstrativo</div>
+          </div>
+        </div>
+        <p>
+          Bem-vindo à sua futura página pessoal!
+        </p>
+        <p class="muted">
+          Aqui aparecerão sua foto, biografia,
+          publicações, seguidores e pessoas
+          que você acompanha.
+        </p>
+        <p class="aviso">
+          O cadastro de usuários reais
+          ainda será desenvolvido.
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <aside class="lateral">
+    <div class="painel">
+      <h3>🔥 Em destaque</h3>
+      <p class="tag">#Tecnologia</p>
+      <p class="tag">#Novidades</p>
+      <p class="tag">#Conhecimento</p>
+      <p class="tag">#Criatividade</p>
     </div>
+    <div class="painel">
+      <h3>💛 Bem-vindo ao ZUI!</h3>
+      <p class="muted">
+        Um novo espaço para descobrir,
+        aprender e compartilhar.
+      </p>
+      <p class="aviso">
+        Plataforma em desenvolvimento.
+      </p>
+    </div>
+  </aside>
 
-  </section>
+</div>
 
-  <footer>
-    ZUI © 2026 — Onde se vê algo novo!
-  </footer>
+<footer class="rodape">
+  ZUI © 2026 — Onde se vê algo novo!
+  <p>Protótipo demonstrativo em desenvolvimento.</p>
+</footer>
+
+<script>
+"use strict";
+
+const CHAVE = "zui_publicacoes_v1";
+const CHAVE_CURTIDAS = "zui_curtidas_v1";
+
+const exemplos = [
+  {
+    id:"exemplo1",
+    autor:"Equipe ZUI",
+    avatar:"Z",
+    texto:"Bem-vindo ao ZUI! 💙💛\nUm novo espaço para descobrir, compartilhar e conectar pessoas. O que você gostaria de aprender hoje?",
+    data:"Publicação de exemplo"
+  },
+  {
+    id:"exemplo2",
+    autor:"Comunidade ZUI",
+    avatar:"C",
+    texto:"✨ Toda pessoa tem algo especial para ensinar. Compartilhe suas experiências e faça parte dessa descoberta!",
+    data:"Publicação de exemplo"
+  },
+  {
+    id:"exemplo3",
+    autor:"ZUI Tecnologia",
+    avatar:"T",
+    texto:"💻 A tecnologia aproxima pessoas, ideias e oportunidades. No ZUI, queremos transformar curiosidade em conhecimento!",
+    data:"Publicação de exemplo"
+  }
+];
+
+function ler(chave, padrao) {
+  try {
+    const valor = JSON.parse(localStorage.getItem(chave));
+    return valor === null ? padrao : valor;
+  } catch {
+    return padrao;
+  }
+}
+
+let minhasPublicacoes = ler(CHAVE, []);
+let curtidas = ler(CHAVE_CURTIDAS, []);
+
+if (!Array.isArray(minhasPublicacoes)) minhasPublicacoes = [];
+if (!Array.isArray(curtidas)) curtidas = [];
+
+function salvar() {
+  try {
+    localStorage.setItem(CHAVE, JSON.stringify(minhasPublicacoes));
+    localStorage.setItem(
+      CHAVE_CURTIDAS,
+      JSON.stringify(curtidas)
+    );
+  } catch {
+    alert("O navegador não conseguiu salvar os dados locais.");
+  }
+}
+
+function publicacoes() {
+  return [...minhasPublicacoes, ...exemplos];
+}
+
+function mostrarArea(nome) {
+  document.querySelectorAll(".area").forEach(area => {
+    area.classList.toggle(
+      "visivel",
+      area.id === nome
+    );
+  });
+
+  document.querySelectorAll(".menu button").forEach(botao => {
+    botao.classList.toggle(
+      "ativo",
+      botao.dataset.area === nome
+    );
+  });
+
+  if (nome === "explorar") pesquisar();
+  window.scrollTo(0,0);
+}
+
+document.querySelectorAll(".menu button").forEach(botao => {
+  botao.addEventListener("click", () => {
+    mostrarArea(botao.dataset.area);
+  });
+});
+
+document.getElementById("irPublicar").addEventListener(
+  "click", () => {
+    mostrarArea("inicio");
+    document.getElementById("textoPost").focus();
+  }
+);
+
+function criarPost(post) {
+  const artigo = document.createElement("article");
+  artigo.className = "post";
+
+  const autor = document.createElement("div");
+  autor.className = "autor";
+
+  const avatar = document.createElement("div");
+  avatar.className = "avatar";
+  avatar.textContent = post.avatar || "Z";
+
+  const infos = document.createElement("div");
+  const nome = document.createElement("div");
+  nome.className = "nome";
+  nome.textContent = post.autor;
+
+  const data = document.createElement("div");
+  data.className = "data";
+  data.textContent = post.data;
+
+  infos.append(nome,data);
+  autor.append(avatar,infos);
+
+  const conteudo = document.createElement("div");
+  conteudo.className = "conteudo";
+  conteudo.textContent = post.texto;
+
+  const botoes = document.createElement("div");
+  botoes.className = "botoes";
+
+  const like = document.createElement("button");
+
+  function atualizarLike() {
+    const marcado = curtidas.includes(post.id);
+    like.textContent = marcado
+      ? "💛 Curtido"
+      : "🤍 Curtir";
+    like.classList.toggle("marcado", marcado);
+    like.setAttribute("aria-pressed", String(marcado));
+  }
+
+  atualizarLike();
+
+  like.addEventListener("click", () => {
+    if (curtidas.includes(post.id)) {
+      curtidas = curtidas.filter(id => id !== post.id);
+    } else {
+      curtidas.push(post.id);
+    }
+    salvar();
+    atualizarLike();
+  });
+
+  const comentar = document.createElement("button");
+  comentar.textContent = "💬 Comentar";
+  comentar.addEventListener("click", () => {
+    alert("Comentários estarão disponíveis em uma próxima versão.");
+  });
+
+  const compartilhar = document.createElement("button");
+  compartilhar.textContent = "↗ Compartilhar";
+  compartilhar.addEventListener("click", async () => {
+    const mensagem = post.texto + "\n\nZUI — Onde se vê algo novo!";
+    try {
+      if (navigator.share) {
+        await navigator.share({
+          title:"ZUI",
+          text:mensagem
+        });
+      } else if (navigator.clipboard) {
+        await navigator.clipboard.writeText(mensagem);
+        alert("Texto copiado para compartilhar!");
+      } else {
+        alert("Compartilhamento indisponível neste navegador.");
+      }
+    } catch (erro) {
+      if (erro.name !== "AbortError") {
+        alert("Não foi possível compartilhar.");
+      }
+    }
+  });
+
+  botoes.append(like,comentar,compartilhar);
+  artigo.append(autor,conteudo,botoes);
+
+  return artigo;
+}
+
+function desenhar(lista, destino) {
+  const caixa = document.getElementById(destino);
+  caixa.replaceChildren();
+
+  if (!lista.length) {
+    const vazio = document.createElement("p");
+    vazio.className = "vazio";
+    vazio.textContent = "Nenhuma publicação encontrada.";
+    caixa.append(vazio);
+    return;
+  }
+
+  lista.forEach(post => {
+    caixa.append(criarPost(post));
+  });
+}
+
+function atualizarFeed() {
+  desenhar(publicacoes(),"feed");
+}
+
+function pesquisar() {
+  const termo = document.getElementById("pesquisa")
+    .value.trim().toLocaleLowerCase("pt-BR");
+
+  const lista = publicacoes().filter(post => {
+    return (post.texto + " " + post.autor)
+      .toLocaleLowerCase("pt-BR")
+      .includes(termo);
+  });
+
+  desenhar(lista,"resultados");
+}
+
+document.getElementById("pesquisa")
+  .addEventListener("input",pesquisar);
+
+document.getElementById("publicarBtn")
+  .addEventListener("click", () => {
+
+    const campo = document.getElementById("textoPost");
+    const texto = campo.value.trim();
+
+    if (!texto) {
+      alert("Escreva alguma coisa antes de publicar!");
+      campo.focus();
+      return;
+    }
+
+    minhasPublicacoes.unshift({
+      id:"meu-" + Date.now() + "-" +
+        Math.random().toString(36).slice(2),
+      autor:"Criador ZUI",
+      avatar:"Z",
+      texto:texto,
+      data:new Date().toLocaleString("pt-BR")
+    });
+
+    salvar();
+    campo.value = "";
+    atualizarFeed();
+
+    alert("Publicação criada neste navegador!");
+  });
+
+atualizarFeed();
+</script>
 
 </body>
 </html>
