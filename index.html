@@ -10,19 +10,17 @@
 <style>
 :root {
   --azul:#071832;
-  --azul2:#102d59;
-  --azul3:#173e76;
+  --azul2:#102950;
+  --azul3:#214779;
   --ouro:#f5bd48;
-  --texto:#eef5ff;
-  --suave:#b7c9e4;
-  --linha:#ffffff22;
+  --branco:#eef5ff;
+  --cinza:#b7c9e4;
 }
 * { box-sizing:border-box; }
-html { scroll-behavior:smooth; }
 body {
   margin:0;
   background:linear-gradient(125deg,#061329,#123568);
-  color:var(--texto);
+  color:var(--branco);
   font-family:Arial,Helvetica,sans-serif;
   min-height:100vh;
 }
@@ -33,55 +31,49 @@ textarea:focus-visible {
   outline:2px solid var(--ouro);
   outline-offset:2px;
 }
-.topo {
-  background:#071832f5;
-  border-bottom:1px solid var(--linha);
+header {
   position:sticky;
   top:0;
   z-index:10;
+  background:#071832f5;
+  border-bottom:1px solid #ffffff22;
   padding:12px 5%;
   display:flex;
   align-items:center;
   justify-content:space-between;
-  gap:15px;
+  gap:12px;
 }
 .marca {
-  color:var(--ouro);
-  font-size:32px;
+  font-size:31px;
   font-weight:900;
-  letter-spacing:2px;
-}
-.slogan {
-  font-size:12px;
-  color:var(--suave);
-}
-.status {
-  border:1px solid #f5bd4870;
   color:var(--ouro);
-  border-radius:20px;
-  padding:9px 12px;
-  font-size:12px;
+}
+.submarca { font-size:12px; color:var(--cinza); }
+.topo-direito {
+  display:flex;
+  align-items:center;
+  gap:10px;
+  flex-wrap:wrap;
 }
 .layout {
   max-width:1250px;
   margin:25px auto;
   padding:0 18px;
   display:grid;
-  grid-template-columns:220px minmax(0,1fr) 245px;
+  grid-template-columns:210px minmax(0,1fr) 225px;
   gap:20px;
   align-items:start;
 }
-.painel {
-  background:#102950;
-  border:1px solid var(--linha);
+.painel,.post {
+  background:var(--azul2);
+  border:1px solid #ffffff22;
   border-radius:18px;
-  padding:18px;
-  margin-bottom:18px;
-  box-shadow:0 8px 25px #00000013;
+  padding:20px;
+  margin-bottom:17px;
 }
 .menu {
   position:sticky;
-  top:88px;
+  top:85px;
 }
 .menu button {
   display:block;
@@ -89,73 +81,82 @@ textarea:focus-visible {
   text-align:left;
   background:transparent;
   color:white;
-  padding:14px;
   border:0;
+  padding:14px;
+  margin:4px 0;
   border-radius:12px;
-  margin:5px 0;
 }
 .menu button:hover,
 .menu button.ativo {
-  background:#214779;
+  background:var(--azul3);
   color:var(--ouro);
 }
 .logo {
   display:block;
   width:100%;
-  max-width:420px;
-  border-radius:12px;
+  max-width:460px;
   margin:auto;
-}
-.apresentacao {
-  text-align:center;
-  padding:18px;
-}
-.apresentacao p {
-  color:var(--suave);
-  margin-bottom:0;
-}
-h2 { font-size:22px; margin:0 0 16px; }
-h3 { font-size:17px; margin:0 0 10px; }
-p { line-height:1.55; }
-.muted { color:var(--suave); }
-.aviso {
-  color:var(--ouro);
-  font-size:12px;
-  line-height:1.5;
-}
-textarea {
-  width:100%;
-  min-height:105px;
-  background:#071b38;
-  color:white;
-  padding:15px;
-  border:1px solid #47618b;
   border-radius:12px;
+}
+.apresentacao { text-align:center; }
+.apresentacao p { color:var(--cinza); }
+h2 { margin:0 0 17px; font-size:23px; }
+h3 { margin:0 0 12px; font-size:18px; }
+p { line-height:1.6; }
+.suave { color:var(--cinza); }
+.dourado {
+  background:var(--ouro);
+  border:0;
+  border-radius:25px;
+  padding:12px 22px;
+  color:#071832;
+  font-weight:bold;
+}
+.dourado:hover { background:#ffd477; }
+.secundario {
+  background:#224578;
+  border:1px solid #ffffff25;
+  border-radius:10px;
+  color:white;
+  padding:11px 15px;
+}
+.campo {
+  display:block;
+  width:100%;
+  background:#071b38;
+  border:1px solid #49658d;
+  border-radius:11px;
+  padding:14px;
+  margin:10px 0 16px;
+  color:white;
+}
+textarea.campo {
+  min-height:110px;
   resize:vertical;
+}
+label {
+  display:block;
+  font-weight:bold;
+  font-size:14px;
 }
 .acoes {
   display:flex;
-  flex-wrap:wrap;
   justify-content:space-between;
   align-items:center;
+  flex-wrap:wrap;
   gap:10px;
-  margin-top:12px;
 }
-.dourado {
-  background:var(--ouro);
-  color:#081b36;
-  border:0;
-  border-radius:25px;
-  padding:12px 23px;
+.area { display:none; }
+.area.visivel { display:block; }
+.avatar {
+  height:43px;
+  width:43px;
+  border-radius:50%;
+  background:linear-gradient(135deg,#1674df,#f5bd48);
+  display:grid;
+  place-items:center;
   font-weight:bold;
-}
-.dourado:hover { background:#ffd479; }
-.post {
-  background:#102950;
-  border:1px solid var(--linha);
-  border-radius:18px;
-  padding:20px;
-  margin-bottom:16px;
+  flex-shrink:0;
 }
 .autor {
   display:flex;
@@ -163,19 +164,7 @@ textarea {
   gap:12px;
   margin-bottom:15px;
 }
-.avatar {
-  width:43px;
-  height:43px;
-  flex-shrink:0;
-  border-radius:50%;
-  background:linear-gradient(135deg,#146cde,#f5bd48);
-  display:grid;
-  place-items:center;
-  color:white;
-  font-weight:bold;
-}
-.nome { font-weight:bold; }
-.data { font-size:12px; color:var(--suave); }
+.data { font-size:12px; color:var(--cinza); }
 .conteudo {
   white-space:pre-wrap;
   overflow-wrap:anywhere;
@@ -185,7 +174,7 @@ textarea {
   display:flex;
   flex-wrap:wrap;
   gap:9px;
-  border-top:1px solid var(--linha);
+  border-top:1px solid #ffffff22;
   padding-top:15px;
   margin-top:16px;
 }
@@ -196,297 +185,317 @@ textarea {
   padding:10px 13px;
   border-radius:10px;
 }
-.botoes button:hover,
 .botoes button.marcado {
   color:var(--ouro);
   border-color:var(--ouro);
 }
 .tag {
   display:inline-block;
-  background:#204578;
-  border-radius:30px;
   padding:9px 12px;
   margin:4px;
+  background:#204578;
+  border-radius:25px;
   font-size:13px;
-}
-.busca {
-  width:100%;
-  background:#071b38;
-  border:1px solid #49658d;
-  padding:13px;
-  border-radius:12px;
-  color:white;
-}
-.area { display:none; }
-.area.visivel { display:block; }
-.destaque {
-  color:var(--ouro);
-}
-.vazio {
-  text-align:center;
-  padding:30px;
-  color:var(--suave);
 }
 .comunidade {
   background:#173b70;
-  padding:17px;
-  margin:12px 0;
+  padding:16px;
   border-radius:12px;
+  margin:12px 0;
 }
+.aviso {
+  color:var(--ouro);
+  font-size:13px;
+  line-height:1.6;
+}
+.mensagem {
+  margin-top:15px;
+  padding:12px;
+  border-radius:10px;
+  background:#173d70;
+  color:white;
+  white-space:pre-wrap;
+  overflow-wrap:anywhere;
+}
+.escondido { display:none!important; }
 .rodape {
   text-align:center;
-  padding:30px 15px;
-  color:var(--suave);
+  padding:35px 15px;
+  color:var(--cinza);
   font-size:13px;
 }
-@media(max-width:1000px) {
-  .layout { grid-template-columns:190px minmax(0,1fr); }
+@media(max-width:1050px) {
+  .layout {
+    grid-template-columns:185px minmax(0,1fr);
+  }
   .lateral { display:none; }
 }
 @media(max-width:650px) {
-  .topo { padding:12px; }
-  .marca { font-size:26px; }
-  .layout {
-    display:block;
-    padding:0 12px;
-    margin:15px auto;
-  }
+  header { padding:12px; }
+  .marca { font-size:25px; }
+  .layout { display:block; padding:0 12px; }
   .menu {
     position:static;
     display:flex;
     overflow-x:auto;
-    gap:5px;
+    gap:4px;
     padding:8px;
   }
   .menu button {
-    flex-shrink:0;
     width:auto;
-    padding:12px;
+    flex-shrink:0;
+    padding:11px;
   }
   .painel,.post { padding:15px; }
-  .status { font-size:11px; }
+  .topo-direito { font-size:12px; }
 }
 </style>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 </head>
 
 <body>
 
-<header class="topo">
+<header>
   <div>
     <div class="marca">ZUI</div>
-    <div class="slogan">Onde se vê algo novo!</div>
+    <div class="submarca">Onde se vê algo novo!</div>
   </div>
-  <div class="status">Protótipo 1.1 • Grátis</div>
+  <div class="topo-direito">
+    <span id="statusConta">Visitante</span>
+    <button id="btnEntrar" class="dourado">
+      Entrar / Cadastrar
+    </button>
+    <button id="btnSair" class="secundario escondido">
+      Sair
+    </button>
+  </div>
 </header>
 
 <div class="layout">
 
-  <aside>
-    <nav class="painel menu" aria-label="Menu principal">
-      <button class="ativo" data-area="inicio">🏠 Início</button>
-      <button data-area="explorar">🔎 Explorar</button>
-      <button data-area="publicar">➕ Publicar</button>
-      <button data-area="comunidades">🌎 Comunidades</button>
-      <button data-area="perfil">👤 Meu perfil</button>
-    </nav>
-  </aside>
+<aside>
+  <nav class="painel menu" aria-label="Menu principal">
+    <button class="ativo" data-area="inicio">🏠 Início</button>
+    <button data-area="explorar">🔎 Explorar</button>
+    <button data-area="publicar">➕ Publicar</button>
+    <button data-area="comunidades">🌎 Comunidades</button>
+    <button data-area="perfil">👤 Meu perfil</button>
+    <button data-area="conta">🔐 Minha conta</button>
+  </nav>
+</aside>
 
-  <main>
+<main>
 
-    <section id="inicio" class="area visivel">
+<section id="inicio" class="area visivel">
 
-      <div class="painel apresentacao">
-        <img class="logo"
-          src="Logo%203D%20ZUI%20com%20%C3%93rbita%20Dourada.png"
-          alt="ZUI — Onde se vê algo novo!">
-        <p>Descubra. Compartilhe. Conecte-se.</p>
-      </div>
+  <div class="painel apresentacao">
+    <img
+      class="logo"
+      src="Logo%203D%20ZUI%20com%20%C3%93rbita%20Dourada.png"
+      alt="ZUI — Onde se vê algo novo!"
+    >
+    <p>Descubra. Compartilhe. Conecte-se.</p>
+  </div>
 
-      <div class="painel">
-        <h2>Compartilhe algo novo!</h2>
-        <textarea id="textoPost"
-          maxlength="2000"
-          placeholder="O que você gostaria de compartilhar hoje?"></textarea>
+  <div class="painel">
+    <h2>Compartilhe algo novo!</h2>
+    <textarea
+      id="textoPost"
+      class="campo"
+      maxlength="2000"
+      placeholder="O que você gostaria de compartilhar hoje?"
+    ></textarea>
 
-        <div class="acoes">
-          <span class="muted">✍️ Publicação de texto</span>
-          <button class="dourado" id="publicarBtn">
-            Publicar no ZUI
-          </button>
+    <div class="acoes">
+      <span class="suave">✍️ Publicação de texto</span>
+      <button id="publicarBtn" class="dourado">
+        Publicar no ZUI
+      </button>
+    </div>
+
+    <p class="aviso">
+      É necessário entrar na sua conta para
+      testar publicações. Por enquanto, elas
+      ficam salvas somente neste navegador.
+    </p>
+  </div>
+
+  <h2>✨ Descobertas para você</h2>
+  <div id="feed"></div>
+
+</section>
+
+<section id="explorar" class="area">
+  <div class="painel">
+    <h2>🔎 Explorar</h2>
+    <p class="suave">Descubra publicações e ideias.</p>
+    <input
+      id="pesquisa"
+      class="campo"
+      placeholder="Pesquisar publicações..."
+    >
+  </div>
+  <div id="resultados"></div>
+</section>
+
+<section id="publicar" class="area">
+  <div class="painel">
+    <h2>➕ Publicar no ZUI</h2>
+    <p>Compartilhe suas descobertas!</p>
+    <button id="irPublicar" class="dourado">
+      Escrever publicação
+    </button>
+    <p class="aviso">
+      Fotos e vídeos serão adicionados
+      nas próximas versões.
+    </p>
+  </div>
+</section>
+
+<section id="comunidades" class="area">
+  <div class="painel">
+    <h2>🌎 Comunidades</h2>
+    <div class="comunidade">💻 Tecnologia e inovação</div>
+    <div class="comunidade">🎨 Arte e criatividade</div>
+    <div class="comunidade">📚 Educação e conhecimento</div>
+    <div class="comunidade">🎬 Cinema e entretenimento</div>
+    <div class="comunidade">🌱 Natureza e descobertas</div>
+    <p class="aviso">
+      Comunidades ilustrativas nesta versão.
+    </p>
+  </div>
+</section>
+
+<section id="perfil" class="area">
+  <div class="painel">
+    <h2>👤 Meu perfil</h2>
+    <div class="autor">
+      <div class="avatar">Z</div>
+      <div>
+        <strong id="perfilNome">Visitante</strong>
+        <div class="data" id="perfilEmail">
+          Entre para ver sua conta
         </div>
-        <p class="aviso">
-          Demonstração: suas publicações ficam
-          somente neste navegador.
-        </p>
       </div>
+    </div>
+    <p class="suave">
+      Aqui teremos foto, biografia,
+      seguidores e publicações.
+    </p>
+    <p class="aviso">
+      O perfil social completo será
+      construído na próxima etapa.
+    </p>
+  </div>
+</section>
 
-      <h2>✨ Descobertas para você</h2>
-      <div id="feed"></div>
+<section id="conta" class="area">
+  <div class="painel">
+    <h2>🔐 Sua conta ZUI</h2>
 
-    </section>
+    <div id="formConta">
+      <p class="suave">
+        Cadastre-se gratuitamente com
+        seu e-mail e uma senha.
+      </p>
 
-    <section id="explorar" class="area">
-      <div class="painel">
-        <h2>🔎 Explorar o ZUI</h2>
-        <p class="muted">
-          Descubra conteúdos e novas ideias.
-        </p>
-        <input class="busca" id="pesquisa"
-          placeholder="Pesquisar publicações...">
-      </div>
-      <div id="resultados"></div>
-    </section>
+      <label for="email">Seu e-mail</label>
+      <input
+        id="email"
+        class="campo"
+        type="email"
+        autocomplete="email"
+        placeholder="seuemail@exemplo.com"
+      >
 
-    <section id="publicar" class="area">
-      <div class="painel">
-        <h2>➕ Criar publicação</h2>
-        <p class="muted">
-          Compartilhe uma descoberta, história
-          ou conhecimento com o ZUI.
-        </p>
-        <button class="dourado" id="irPublicar">
-          Escrever uma publicação
+      <label for="senha">Sua senha</label>
+      <input
+        id="senha"
+        class="campo"
+        type="password"
+        autocomplete="current-password"
+        minlength="6"
+        placeholder="Sua senha"
+      >
+
+      <div class="acoes">
+        <button id="cadastrarBtn" class="dourado">
+          Criar minha conta
         </button>
-        <p class="aviso">
-          Fotos e vídeos serão implementados
-          em uma próxima etapa.
-        </p>
+        <button id="loginBtn" class="secundario">
+          Já tenho conta — Entrar
+        </button>
       </div>
-    </section>
 
-    <section id="comunidades" class="area">
-      <div class="painel">
-        <h2>🌎 Comunidades ZUI</h2>
-        <p class="muted">
-          Espaços para conectar pessoas
-          que compartilham interesses.
-        </p>
-        <div class="comunidade">💻 Tecnologia e inovação</div>
-        <div class="comunidade">🎨 Arte e criatividade</div>
-        <div class="comunidade">📚 Conhecimento e educação</div>
-        <div class="comunidade">🎬 Cinema e entretenimento</div>
-        <div class="comunidade">🌱 Natureza e descobertas</div>
-        <p class="aviso">
-          Comunidades ilustrativas. Ainda
-          não é possível participar delas.
-        </p>
-      </div>
-    </section>
-
-    <section id="perfil" class="area">
-      <div class="painel">
-        <h2>👤 Meu perfil</h2>
-        <div class="autor">
-          <div class="avatar">Z</div>
-          <div>
-            <div class="nome">Criador ZUI</div>
-            <div class="data">@criadorzui • Perfil demonstrativo</div>
-          </div>
-        </div>
-        <p>
-          Bem-vindo à sua futura página pessoal!
-        </p>
-        <p class="muted">
-          Aqui aparecerão sua foto, biografia,
-          publicações, seguidores e pessoas
-          que você acompanha.
-        </p>
-        <p class="aviso">
-          O cadastro de usuários reais
-          ainda será desenvolvido.
-        </p>
-      </div>
-    </section>
-
-  </main>
-
-  <aside class="lateral">
-    <div class="painel">
-      <h3>🔥 Em destaque</h3>
-      <p class="tag">#Tecnologia</p>
-      <p class="tag">#Novidades</p>
-      <p class="tag">#Conhecimento</p>
-      <p class="tag">#Criatividade</p>
-    </div>
-    <div class="painel">
-      <h3>💛 Bem-vindo ao ZUI!</h3>
-      <p class="muted">
-        Um novo espaço para descobrir,
-        aprender e compartilhar.
-      </p>
       <p class="aviso">
-        Plataforma em desenvolvimento.
+        Ao cadastrar-se, confira seu e-mail
+        para confirmar a conta. Nunca compartilhe
+        sua senha.
       </p>
     </div>
-  </aside>
+
+    <div id="contaAtiva" class="escondido">
+      <h3>💛 Você está conectado!</h3>
+      <p id="emailAtivo"></p>
+      <p class="suave">
+        Seu acesso é autenticado pelo Supabase.
+      </p>
+    </div>
+
+    <div id="mensagemAuth"
+      class="mensagem escondido"
+      role="status"
+      aria-live="polite"></div>
+  </div>
+</section>
+
+</main>
+
+<aside class="lateral">
+  <div class="painel">
+    <h3>🔥 Em destaque</h3>
+    <span class="tag">#Tecnologia</span>
+    <span class="tag">#Novidades</span>
+    <span class="tag">#Conhecimento</span>
+    <span class="tag">#Criatividade</span>
+  </div>
+
+  <div class="painel">
+    <h3>💙 Bem-vindo ao ZUI!</h3>
+    <p class="suave">
+      Um lugar para descobrir, aprender
+      e compartilhar.
+    </p>
+    <p class="aviso">
+      Plataforma em desenvolvimento.
+    </p>
+  </div>
+</aside>
 
 </div>
 
 <footer class="rodape">
   ZUI © 2026 — Onde se vê algo novo!
-  <p>Protótipo demonstrativo em desenvolvimento.</p>
+  <p>Versão experimental 1.2</p>
 </footer>
 
 <script>
 "use strict";
 
-const CHAVE = "zui_publicacoes_v1";
-const CHAVE_CURTIDAS = "zui_curtidas_v1";
+// CONEXÃO PÚBLICA COM O SUPABASE
+const SUPABASE_URL =
+  "https://kplohqpdfzwcsaiprpum.supabase.co";
 
-const exemplos = [
-  {
-    id:"exemplo1",
-    autor:"Equipe ZUI",
-    avatar:"Z",
-    texto:"Bem-vindo ao ZUI! 💙💛\nUm novo espaço para descobrir, compartilhar e conectar pessoas. O que você gostaria de aprender hoje?",
-    data:"Publicação de exemplo"
-  },
-  {
-    id:"exemplo2",
-    autor:"Comunidade ZUI",
-    avatar:"C",
-    texto:"✨ Toda pessoa tem algo especial para ensinar. Compartilhe suas experiências e faça parte dessa descoberta!",
-    data:"Publicação de exemplo"
-  },
-  {
-    id:"exemplo3",
-    autor:"ZUI Tecnologia",
-    avatar:"T",
-    texto:"💻 A tecnologia aproxima pessoas, ideias e oportunidades. No ZUI, queremos transformar curiosidade em conhecimento!",
-    data:"Publicação de exemplo"
-  }
-];
+const SUPABASE_KEY =
+  "sb_publishable_3S6tYlctAhS_ON8ZLPqBFg_Nw4JTEct";
 
-function ler(chave, padrao) {
-  try {
-    const valor = JSON.parse(localStorage.getItem(chave));
-    return valor === null ? padrao : valor;
-  } catch {
-    return padrao;
-  }
-}
+const db = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_KEY
+);
 
-let minhasPublicacoes = ler(CHAVE, []);
-let curtidas = ler(CHAVE_CURTIDAS, []);
-
-if (!Array.isArray(minhasPublicacoes)) minhasPublicacoes = [];
-if (!Array.isArray(curtidas)) curtidas = [];
-
-function salvar() {
-  try {
-    localStorage.setItem(CHAVE, JSON.stringify(minhasPublicacoes));
-    localStorage.setItem(
-      CHAVE_CURTIDAS,
-      JSON.stringify(curtidas)
-    );
-  } catch {
-    alert("O navegador não conseguiu salvar os dados locais.");
-  }
-}
-
-function publicacoes() {
-  return [...minhasPublicacoes, ...exemplos];
-}
+let usuarioAtual = null;
 
 function mostrarArea(nome) {
   document.querySelectorAll(".area").forEach(area => {
@@ -504,6 +513,7 @@ function mostrarArea(nome) {
   });
 
   if (nome === "explorar") pesquisar();
+
   window.scrollTo(0,0);
 }
 
@@ -513,12 +523,232 @@ document.querySelectorAll(".menu button").forEach(botao => {
   });
 });
 
-document.getElementById("irPublicar").addEventListener(
-  "click", () => {
-    mostrarArea("inicio");
-    document.getElementById("textoPost").focus();
+document.getElementById("btnEntrar").onclick = () => {
+  mostrarArea("conta");
+};
+
+document.getElementById("irPublicar").onclick = () => {
+  mostrarArea("inicio");
+  document.getElementById("textoPost").focus();
+};
+
+function mensagem(texto) {
+  const elemento = document.getElementById("mensagemAuth");
+  elemento.textContent = texto;
+  elemento.classList.remove("escondido");
+}
+
+function traduzirErro(erro) {
+  const texto = erro.message || "Erro desconhecido";
+
+  if (texto.includes("Invalid login credentials")) {
+    return "E-mail ou senha incorretos.";
   }
-);
+  if (texto.includes("Email not confirmed")) {
+    return "Confirme seu e-mail antes de entrar.";
+  }
+  if (texto.includes("already registered")) {
+    return "Este e-mail já possui cadastro.";
+  }
+  if (texto.includes("rate limit")) {
+    return "Limite temporário de tentativas. Tente novamente mais tarde.";
+  }
+  return texto;
+}
+
+function dadosLogin() {
+  const email = document.getElementById("email")
+    .value.trim();
+  const senha = document.getElementById("senha").value;
+
+  if (!email || !senha) {
+    mensagem("Preencha o e-mail e a senha.");
+    return null;
+  }
+
+  if (senha.length < 6) {
+    mensagem("A senha deve ter pelo menos 6 caracteres.");
+    return null;
+  }
+
+  return {email,senha};
+}
+
+function bloquearBotoes(valor) {
+  document.getElementById("cadastrarBtn").disabled = valor;
+  document.getElementById("loginBtn").disabled = valor;
+}
+
+document.getElementById("cadastrarBtn").onclick =
+async () => {
+  const dados = dadosLogin();
+  if (!dados) return;
+
+  bloquearBotoes(true);
+  mensagem("Enviando cadastro...");
+
+  try {
+    const {data,error} = await db.auth.signUp({
+      email:dados.email,
+      password:dados.senha,
+      options:{
+        emailRedirectTo:
+          "https://contatozoopai-oss.github.io/ZUI/"
+      }
+    });
+
+    if (error) throw error;
+
+    if (data.session) {
+      mensagem("Conta criada! Você já pode usar o ZUI.");
+    } else {
+      mensagem(
+        "Solicitação recebida! Se necessário, " +
+        "você receberá um e-mail de confirmação. " +
+        "Verifique também a pasta de spam."
+      );
+    }
+
+    document.getElementById("senha").value = "";
+
+  } catch (erro) {
+    mensagem(traduzirErro(erro));
+  } finally {
+    bloquearBotoes(false);
+  }
+};
+
+document.getElementById("loginBtn").onclick =
+async () => {
+  const dados = dadosLogin();
+  if (!dados) return;
+
+  bloquearBotoes(true);
+  mensagem("Entrando na sua conta...");
+
+  try {
+    const {error} = await db.auth.signInWithPassword({
+      email:dados.email,
+      password:dados.senha
+    });
+
+    if (error) throw error;
+
+    mensagem("Bem-vindo ao ZUI!");
+    document.getElementById("senha").value = "";
+    mostrarArea("inicio");
+
+  } catch (erro) {
+    mensagem(traduzirErro(erro));
+  } finally {
+    bloquearBotoes(false);
+  }
+};
+
+document.getElementById("btnSair").onclick =
+async () => {
+  const {error} = await db.auth.signOut();
+
+  if (error) {
+    alert(traduzirErro(error));
+  } else {
+    mostrarArea("inicio");
+  }
+};
+
+function atualizarUsuario(usuario) {
+  usuarioAtual = usuario || null;
+
+  const conectado = !!usuarioAtual;
+
+  document.getElementById("btnEntrar")
+    .classList.toggle("escondido",conectado);
+
+  document.getElementById("btnSair")
+    .classList.toggle("escondido",!conectado);
+
+  document.getElementById("formConta")
+    .classList.toggle("escondido",conectado);
+
+  document.getElementById("contaAtiva")
+    .classList.toggle("escondido",!conectado);
+
+  const nome = conectado
+    ? usuarioAtual.email.split("@")[0]
+    : "Visitante";
+
+  document.getElementById("statusConta")
+    .textContent = conectado ? nome : "Visitante";
+
+  document.getElementById("perfilNome")
+    .textContent = conectado ? nome : "Visitante";
+
+  document.getElementById("perfilEmail")
+    .textContent = conectado
+      ? usuarioAtual.email
+      : "Entre para ver sua conta";
+
+  document.getElementById("emailAtivo")
+    .textContent = conectado ? usuarioAtual.email : "";
+
+  atualizarFeed();
+}
+
+const exemplos = [
+  {
+    id:"exemplo1",
+    autor:"Equipe ZUI",
+    texto:"Bem-vindo ao ZUI! 💙💛\nUm espaço para descobrir, compartilhar e conectar pessoas.",
+    data:"Publicação de exemplo"
+  },
+  {
+    id:"exemplo2",
+    autor:"Comunidade ZUI",
+    texto:"✨ Toda pessoa tem algo especial para ensinar. Compartilhe suas experiências e descobertas!",
+    data:"Publicação de exemplo"
+  }
+];
+
+function lerLocal(chave, padrao) {
+  try {
+    const valor = JSON.parse(localStorage.getItem(chave));
+    return valor === null ? padrao : valor;
+  } catch {
+    return padrao;
+  }
+}
+
+function chavePosts() {
+  return usuarioAtual
+    ? "zui_posts_" + usuarioAtual.id
+    : null;
+}
+
+function minhasPublicacoes() {
+  const chave = chavePosts();
+  if (!chave) return [];
+
+  const posts = lerLocal(chave,[]);
+  return Array.isArray(posts) ? posts : [];
+}
+
+function todosPosts() {
+  return [...minhasPublicacoes(),...exemplos];
+}
+
+function chaveCurtidas() {
+  return usuarioAtual
+    ? "zui_likes_" + usuarioAtual.id
+    : null;
+}
+
+function curtidasSalvas() {
+  const chave = chaveCurtidas();
+  if (!chave) return [];
+
+  const curtidas = lerLocal(chave,[]);
+  return Array.isArray(curtidas) ? curtidas : [];
+}
 
 function criarPost(post) {
   const artigo = document.createElement("article");
@@ -529,19 +759,19 @@ function criarPost(post) {
 
   const avatar = document.createElement("div");
   avatar.className = "avatar";
-  avatar.textContent = post.avatar || "Z";
+  avatar.textContent = post.autor.charAt(0).toUpperCase();
 
-  const infos = document.createElement("div");
-  const nome = document.createElement("div");
-  nome.className = "nome";
+  const info = document.createElement("div");
+
+  const nome = document.createElement("strong");
   nome.textContent = post.autor;
 
   const data = document.createElement("div");
   data.className = "data";
   data.textContent = post.data;
 
-  infos.append(nome,data);
-  autor.append(avatar,infos);
+  info.append(nome,data);
+  autor.append(avatar,info);
 
   const conteudo = document.createElement("div");
   conteudo.className = "conteudo";
@@ -550,73 +780,90 @@ function criarPost(post) {
   const botoes = document.createElement("div");
   botoes.className = "botoes";
 
-  const like = document.createElement("button");
+  const curtir = document.createElement("button");
 
-  function atualizarLike() {
-    const marcado = curtidas.includes(post.id);
-    like.textContent = marcado
-      ? "💛 Curtido"
-      : "🤍 Curtir";
-    like.classList.toggle("marcado", marcado);
-    like.setAttribute("aria-pressed", String(marcado));
+  function atualizarCurtir() {
+    const marcado = curtidasSalvas().includes(post.id);
+    curtir.textContent = marcado ? "💛 Curtido" : "🤍 Curtir";
+    curtir.classList.toggle("marcado",marcado);
+    curtir.setAttribute("aria-pressed",String(marcado));
   }
 
-  atualizarLike();
+  atualizarCurtir();
 
-  like.addEventListener("click", () => {
-    if (curtidas.includes(post.id)) {
-      curtidas = curtidas.filter(id => id !== post.id);
-    } else {
-      curtidas.push(post.id);
+  curtir.onclick = () => {
+    if (!usuarioAtual) {
+      mostrarArea("conta");
+      mensagem("Entre na sua conta para curtir.");
+      return;
     }
-    salvar();
-    atualizarLike();
-  });
+
+    let lista = curtidasSalvas();
+
+    if (lista.includes(post.id)) {
+      lista = lista.filter(id => id !== post.id);
+    } else {
+      lista.push(post.id);
+    }
+
+    try {
+      localStorage.setItem(
+        chaveCurtidas(),
+        JSON.stringify(lista)
+      );
+      atualizarCurtir();
+    } catch {
+      alert("Não foi possível salvar a curtida.");
+    }
+  };
 
   const comentar = document.createElement("button");
   comentar.textContent = "💬 Comentar";
-  comentar.addEventListener("click", () => {
-    alert("Comentários estarão disponíveis em uma próxima versão.");
-  });
+  comentar.onclick = () => {
+    alert("Comentários chegarão em uma próxima versão.");
+  };
 
   const compartilhar = document.createElement("button");
   compartilhar.textContent = "↗ Compartilhar";
-  compartilhar.addEventListener("click", async () => {
-    const mensagem = post.texto + "\n\nZUI — Onde se vê algo novo!";
+
+  compartilhar.onclick = async () => {
+    const texto = post.texto +
+      "\n\nZUI — Onde se vê algo novo!";
+
     try {
       if (navigator.share) {
         await navigator.share({
           title:"ZUI",
-          text:mensagem
+          text:texto
         });
       } else if (navigator.clipboard) {
-        await navigator.clipboard.writeText(mensagem);
-        alert("Texto copiado para compartilhar!");
+        await navigator.clipboard.writeText(texto);
+        alert("Texto copiado!");
       } else {
-        alert("Compartilhamento indisponível neste navegador.");
+        alert("Compartilhamento indisponível.");
       }
     } catch (erro) {
       if (erro.name !== "AbortError") {
         alert("Não foi possível compartilhar.");
       }
     }
-  });
+  };
 
-  botoes.append(like,comentar,compartilhar);
+  botoes.append(curtir,comentar,compartilhar);
   artigo.append(autor,conteudo,botoes);
 
   return artigo;
 }
 
-function desenhar(lista, destino) {
+function desenhar(lista,destino) {
   const caixa = document.getElementById(destino);
   caixa.replaceChildren();
 
   if (!lista.length) {
-    const vazio = document.createElement("p");
-    vazio.className = "vazio";
-    vazio.textContent = "Nenhuma publicação encontrada.";
-    caixa.append(vazio);
+    const aviso = document.createElement("p");
+    aviso.className = "suave";
+    aviso.textContent = "Nenhuma publicação encontrada.";
+    caixa.append(aviso);
     return;
   }
 
@@ -626,52 +873,76 @@ function desenhar(lista, destino) {
 }
 
 function atualizarFeed() {
-  desenhar(publicacoes(),"feed");
+  desenhar(todosPosts(),"feed");
 }
 
 function pesquisar() {
   const termo = document.getElementById("pesquisa")
     .value.trim().toLocaleLowerCase("pt-BR");
 
-  const lista = publicacoes().filter(post => {
+  const resultados = todosPosts().filter(post => {
     return (post.texto + " " + post.autor)
       .toLocaleLowerCase("pt-BR")
       .includes(termo);
   });
 
-  desenhar(lista,"resultados");
+  desenhar(resultados,"resultados");
 }
 
 document.getElementById("pesquisa")
   .addEventListener("input",pesquisar);
 
-document.getElementById("publicarBtn")
-  .addEventListener("click", () => {
+document.getElementById("publicarBtn").onclick = () => {
+  if (!usuarioAtual) {
+    mostrarArea("conta");
+    mensagem("Cadastre-se ou entre para publicar.");
+    return;
+  }
 
-    const campo = document.getElementById("textoPost");
-    const texto = campo.value.trim();
+  const campo = document.getElementById("textoPost");
+  const texto = campo.value.trim();
 
-    if (!texto) {
-      alert("Escreva alguma coisa antes de publicar!");
-      campo.focus();
-      return;
-    }
+  if (!texto) {
+    alert("Escreva algo antes de publicar!");
+    return;
+  }
 
-    minhasPublicacoes.unshift({
-      id:"meu-" + Date.now() + "-" +
-        Math.random().toString(36).slice(2),
-      autor:"Criador ZUI",
-      avatar:"Z",
-      texto:texto,
-      data:new Date().toLocaleString("pt-BR")
-    });
+  const lista = minhasPublicacoes();
 
-    salvar();
+  lista.unshift({
+    id:"post-" + Date.now() + "-" +
+      Math.random().toString(36).slice(2),
+    autor:usuarioAtual.email.split("@")[0],
+    texto:texto,
+    data:new Date().toLocaleString("pt-BR")
+  });
+
+  try {
+    localStorage.setItem(
+      chavePosts(),
+      JSON.stringify(lista)
+    );
+
     campo.value = "";
     atualizarFeed();
 
-    alert("Publicação criada neste navegador!");
-  });
+    alert("Publicação salva neste navegador!");
+
+  } catch {
+    alert("Não foi possível salvar sua publicação.");
+  }
+};
+
+db.auth.onAuthStateChange((_evento,sessao) => {
+  atualizarUsuario(sessao?.user || null);
+});
+
+db.auth.getSession().then(({data,error}) => {
+  if (error) {
+    console.error("Erro de autenticação:",error);
+  }
+  atualizarUsuario(data?.session?.user || null);
+});
 
 atualizarFeed();
 </script>
