@@ -16,7 +16,9 @@
   --branco:#eef5ff;
   --cinza:#b7c9e4;
 }
+
 * { box-sizing:border-box; }
+
 body {
   margin:0;
   background:linear-gradient(125deg,#061329,#123568);
@@ -24,13 +26,18 @@ body {
   font-family:Arial,Helvetica,sans-serif;
   min-height:100vh;
 }
+
 button,input,textarea { font:inherit; }
 button { cursor:pointer; }
-button:focus-visible,input:focus-visible,
+button:disabled { cursor:wait; opacity:.65; }
+
+button:focus-visible,
+input:focus-visible,
 textarea:focus-visible {
   outline:2px solid var(--ouro);
   outline-offset:2px;
 }
+
 header {
   position:sticky;
   top:0;
@@ -43,18 +50,25 @@ header {
   justify-content:space-between;
   gap:12px;
 }
+
 .marca {
   font-size:31px;
   font-weight:900;
   color:var(--ouro);
 }
-.submarca { font-size:12px; color:var(--cinza); }
+
+.submarca {
+  font-size:12px;
+  color:var(--cinza);
+}
+
 .topo-direito {
   display:flex;
   align-items:center;
   gap:10px;
   flex-wrap:wrap;
 }
+
 .layout {
   max-width:1250px;
   margin:25px auto;
@@ -64,6 +78,7 @@ header {
   gap:20px;
   align-items:start;
 }
+
 .painel,.post {
   background:var(--azul2);
   border:1px solid #ffffff22;
@@ -71,10 +86,12 @@ header {
   padding:20px;
   margin-bottom:17px;
 }
+
 .menu {
   position:sticky;
   top:85px;
 }
+
 .menu button {
   display:block;
   width:100%;
@@ -86,11 +103,13 @@ header {
   margin:4px 0;
   border-radius:12px;
 }
+
 .menu button:hover,
 .menu button.ativo {
   background:var(--azul3);
   color:var(--ouro);
 }
+
 .logo {
   display:block;
   width:100%;
@@ -98,12 +117,16 @@ header {
   margin:auto;
   border-radius:12px;
 }
+
 .apresentacao { text-align:center; }
 .apresentacao p { color:var(--cinza); }
+
 h2 { margin:0 0 17px; font-size:23px; }
 h3 { margin:0 0 12px; font-size:18px; }
 p { line-height:1.6; }
+
 .suave { color:var(--cinza); }
+
 .dourado {
   background:var(--ouro);
   border:0;
@@ -112,7 +135,9 @@ p { line-height:1.6; }
   color:#071832;
   font-weight:bold;
 }
+
 .dourado:hover { background:#ffd477; }
+
 .secundario {
   background:#224578;
   border:1px solid #ffffff25;
@@ -120,6 +145,7 @@ p { line-height:1.6; }
   color:white;
   padding:11px 15px;
 }
+
 .campo {
   display:block;
   width:100%;
@@ -130,15 +156,18 @@ p { line-height:1.6; }
   margin:10px 0 16px;
   color:white;
 }
+
 textarea.campo {
   min-height:110px;
   resize:vertical;
 }
+
 label {
   display:block;
   font-weight:bold;
   font-size:14px;
 }
+
 .acoes {
   display:flex;
   justify-content:space-between;
@@ -146,8 +175,10 @@ label {
   flex-wrap:wrap;
   gap:10px;
 }
+
 .area { display:none; }
 .area.visivel { display:block; }
+
 .avatar {
   height:43px;
   width:43px;
@@ -158,18 +189,25 @@ label {
   font-weight:bold;
   flex-shrink:0;
 }
+
 .autor {
   display:flex;
   align-items:center;
   gap:12px;
   margin-bottom:15px;
 }
-.data { font-size:12px; color:var(--cinza); }
+
+.data {
+  font-size:12px;
+  color:var(--cinza);
+}
+
 .conteudo {
   white-space:pre-wrap;
   overflow-wrap:anywhere;
   line-height:1.65;
 }
+
 .botoes {
   display:flex;
   flex-wrap:wrap;
@@ -178,6 +216,7 @@ label {
   padding-top:15px;
   margin-top:16px;
 }
+
 .botoes button {
   background:#1b3b6a;
   color:white;
@@ -185,10 +224,12 @@ label {
   padding:10px 13px;
   border-radius:10px;
 }
+
 .botoes button.marcado {
   color:var(--ouro);
   border-color:var(--ouro);
 }
+
 .tag {
   display:inline-block;
   padding:9px 12px;
@@ -197,17 +238,20 @@ label {
   border-radius:25px;
   font-size:13px;
 }
+
 .comunidade {
   background:#173b70;
   padding:16px;
   border-radius:12px;
   margin:12px 0;
 }
+
 .aviso {
   color:var(--ouro);
   font-size:13px;
   line-height:1.6;
 }
+
 .mensagem {
   margin-top:15px;
   padding:12px;
@@ -217,19 +261,23 @@ label {
   white-space:pre-wrap;
   overflow-wrap:anywhere;
 }
+
 .escondido { display:none!important; }
+
 .rodape {
   text-align:center;
   padding:35px 15px;
   color:var(--cinza);
   font-size:13px;
 }
+
 @media(max-width:1050px) {
   .layout {
     grid-template-columns:185px minmax(0,1fr);
   }
   .lateral { display:none; }
 }
+
 @media(max-width:650px) {
   header { padding:12px; }
   .marca { font-size:25px; }
@@ -261,6 +309,7 @@ label {
     <div class="marca">ZUI</div>
     <div class="submarca">Onde se vê algo novo!</div>
   </div>
+
   <div class="topo-direito">
     <span id="statusConta">Visitante</span>
     <button id="btnEntrar" class="dourado">
@@ -300,6 +349,7 @@ label {
 
   <div class="painel">
     <h2>Compartilhe algo novo!</h2>
+
     <textarea
       id="textoPost"
       class="campo"
@@ -315,21 +365,36 @@ label {
     </div>
 
     <p class="aviso">
-      É necessário entrar na sua conta para
-      testar publicações. Por enquanto, elas
-      ficam salvas somente neste navegador.
+      Entre na sua conta para publicar.
+      As novas publicações são salvas no Supabase
+      e podem ser vistas por outros usuários conectados.
     </p>
+
+    <div
+      id="mensagemPost"
+      class="mensagem escondido"
+      role="status"
+      aria-live="polite"
+    ></div>
   </div>
 
   <h2>✨ Descobertas para você</h2>
-  <div id="feed"></div>
 
+  <p
+    id="statusFeed"
+    class="suave"
+    role="status"
+    aria-live="polite"
+  ></p>
+
+  <div id="feed"></div>
 </section>
 
 <section id="explorar" class="area">
   <div class="painel">
     <h2>🔎 Explorar</h2>
     <p class="suave">Descubra publicações e ideias.</p>
+
     <input
       id="pesquisa"
       class="campo"
@@ -343,9 +408,11 @@ label {
   <div class="painel">
     <h2>➕ Publicar no ZUI</h2>
     <p>Compartilhe suas descobertas!</p>
+
     <button id="irPublicar" class="dourado">
       Escrever publicação
     </button>
+
     <p class="aviso">
       Fotos e vídeos serão adicionados
       nas próximas versões.
@@ -356,11 +423,13 @@ label {
 <section id="comunidades" class="area">
   <div class="painel">
     <h2>🌎 Comunidades</h2>
+
     <div class="comunidade">💻 Tecnologia e inovação</div>
     <div class="comunidade">🎨 Arte e criatividade</div>
     <div class="comunidade">📚 Educação e conhecimento</div>
     <div class="comunidade">🎬 Cinema e entretenimento</div>
     <div class="comunidade">🌱 Natureza e descobertas</div>
+
     <p class="aviso">
       Comunidades ilustrativas nesta versão.
     </p>
@@ -370,6 +439,7 @@ label {
 <section id="perfil" class="area">
   <div class="painel">
     <h2>👤 Meu perfil</h2>
+
     <div class="autor">
       <div class="avatar">Z</div>
       <div>
@@ -379,13 +449,15 @@ label {
         </div>
       </div>
     </div>
+
     <p class="suave">
       Aqui teremos foto, biografia,
       seguidores e publicações.
     </p>
+
     <p class="aviso">
-      O perfil social completo será
-      construído na próxima etapa.
+      O perfil social completo será construído
+      em uma próxima etapa.
     </p>
   </div>
 </section>
@@ -423,6 +495,7 @@ label {
         <button id="cadastrarBtn" class="dourado">
           Criar minha conta
         </button>
+
         <button id="loginBtn" class="secundario">
           Já tenho conta — Entrar
         </button>
@@ -430,8 +503,8 @@ label {
 
       <p class="aviso">
         Ao cadastrar-se, confira seu e-mail
-        para confirmar a conta. Nunca compartilhe
-        sua senha.
+        para confirmar a conta.
+        Nunca compartilhe sua senha.
       </p>
     </div>
 
@@ -443,10 +516,12 @@ label {
       </p>
     </div>
 
-    <div id="mensagemAuth"
+    <div
+      id="mensagemAuth"
       class="mensagem escondido"
       role="status"
-      aria-live="polite"></div>
+      aria-live="polite"
+    ></div>
   </div>
 </section>
 
@@ -477,13 +552,15 @@ label {
 
 <footer class="rodape">
   ZUI © 2026 — Onde se vê algo novo!
-  <p>Versão experimental 1.2</p>
+  <p>Versão experimental 1.3</p>
 </footer>
 
 <script>
 "use strict";
 
-// CONEXÃO PÚBLICA COM O SUPABASE
+// Apenas chave pública.
+// A proteção dos dados depende das políticas RLS no Supabase.
+
 const SUPABASE_URL =
   "https://kplohqpdfzwcsaiprpum.supabase.co";
 
@@ -496,13 +573,27 @@ const db = window.supabase.createClient(
 );
 
 let usuarioAtual = null;
+let publicacoesRemotas = [];
+let carregamentoAtual = 0;
+
+const exemplos = [
+  {
+    id:"exemplo1",
+    autor:"Equipe ZUI",
+    texto:"Bem-vindo ao ZUI! 💙💛\nUm espaço para descobrir, compartilhar e conectar pessoas.",
+    data:"Publicação de exemplo"
+  },
+  {
+    id:"exemplo2",
+    autor:"Comunidade ZUI",
+    texto:"✨ Toda pessoa tem algo especial para ensinar. Compartilhe suas experiências e descobertas!",
+    data:"Publicação de exemplo"
+  }
+];
 
 function mostrarArea(nome) {
   document.querySelectorAll(".area").forEach(area => {
-    area.classList.toggle(
-      "visivel",
-      area.id === nome
-    );
+    area.classList.toggle("visivel", area.id === nome);
   });
 
   document.querySelectorAll(".menu button").forEach(botao => {
@@ -538,27 +629,36 @@ function mensagem(texto) {
   elemento.classList.remove("escondido");
 }
 
+function avisoPost(texto) {
+  const elemento = document.getElementById("mensagemPost");
+  elemento.textContent = texto;
+  elemento.classList.remove("escondido");
+}
+
 function traduzirErro(erro) {
-  const texto = erro.message || "Erro desconhecido";
+  const texto = erro?.message || "Erro desconhecido";
 
   if (texto.includes("Invalid login credentials")) {
     return "E-mail ou senha incorretos.";
   }
+
   if (texto.includes("Email not confirmed")) {
     return "Confirme seu e-mail antes de entrar.";
   }
+
   if (texto.includes("already registered")) {
     return "Este e-mail já possui cadastro.";
   }
-  if (texto.includes("rate limit")) {
+
+  if (texto.toLowerCase().includes("rate limit")) {
     return "Limite temporário de tentativas. Tente novamente mais tarde.";
   }
+
   return texto;
 }
 
 function dadosLogin() {
-  const email = document.getElementById("email")
-    .value.trim();
+  const email = document.getElementById("email").value.trim();
   const senha = document.getElementById("senha").value;
 
   if (!email || !senha) {
@@ -579,8 +679,7 @@ function bloquearBotoes(valor) {
   document.getElementById("loginBtn").disabled = valor;
 }
 
-document.getElementById("cadastrarBtn").onclick =
-async () => {
+document.getElementById("cadastrarBtn").onclick = async () => {
   const dados = dadosLogin();
   if (!dados) return;
 
@@ -611,15 +710,14 @@ async () => {
 
     document.getElementById("senha").value = "";
 
-  } catch (erro) {
+  } catch(erro) {
     mensagem(traduzirErro(erro));
   } finally {
     bloquearBotoes(false);
   }
 };
 
-document.getElementById("loginBtn").onclick =
-async () => {
+document.getElementById("loginBtn").onclick = async () => {
   const dados = dadosLogin();
   if (!dados) return;
 
@@ -638,15 +736,14 @@ async () => {
     document.getElementById("senha").value = "";
     mostrarArea("inicio");
 
-  } catch (erro) {
+  } catch(erro) {
     mensagem(traduzirErro(erro));
   } finally {
     bloquearBotoes(false);
   }
 };
 
-document.getElementById("btnSair").onclick =
-async () => {
+document.getElementById("btnSair").onclick = async () => {
   const {error} = await db.auth.signOut();
 
   if (error) {
@@ -657,6 +754,8 @@ async () => {
 };
 
 function atualizarUsuario(usuario) {
+  const idAnterior = usuarioAtual?.id || null;
+
   usuarioAtual = usuario || null;
 
   const conectado = !!usuarioAtual;
@@ -674,66 +773,34 @@ function atualizarUsuario(usuario) {
     .classList.toggle("escondido",!conectado);
 
   const nome = conectado
-    ? usuarioAtual.email.split("@")[0]
+    ? (usuarioAtual.email || "Usuário").split("@")[0]
     : "Visitante";
 
-  document.getElementById("statusConta")
-    .textContent = conectado ? nome : "Visitante";
+  document.getElementById("statusConta").textContent = nome;
+  document.getElementById("perfilNome").textContent = nome;
 
-  document.getElementById("perfilNome")
-    .textContent = conectado ? nome : "Visitante";
-
-  document.getElementById("perfilEmail")
-    .textContent = conectado
-      ? usuarioAtual.email
+  document.getElementById("perfilEmail").textContent =
+    conectado
+      ? (usuarioAtual.email || "")
       : "Entre para ver sua conta";
 
-  document.getElementById("emailAtivo")
-    .textContent = conectado ? usuarioAtual.email : "";
+  document.getElementById("emailAtivo").textContent =
+    conectado ? (usuarioAtual.email || "") : "";
 
-  atualizarFeed();
+  if (idAnterior !== (usuarioAtual?.id || null)) {
+    publicacoesRemotas = [];
+    atualizarFeed();
+    carregarPublicacoes();
+  }
 }
 
-const exemplos = [
-  {
-    id:"exemplo1",
-    autor:"Equipe ZUI",
-    texto:"Bem-vindo ao ZUI! 💙💛\nUm espaço para descobrir, compartilhar e conectar pessoas.",
-    data:"Publicação de exemplo"
-  },
-  {
-    id:"exemplo2",
-    autor:"Comunidade ZUI",
-    texto:"✨ Toda pessoa tem algo especial para ensinar. Compartilhe suas experiências e descobertas!",
-    data:"Publicação de exemplo"
-  }
-];
-
-function lerLocal(chave, padrao) {
+function lerLocal(chave,padrao) {
   try {
     const valor = JSON.parse(localStorage.getItem(chave));
     return valor === null ? padrao : valor;
   } catch {
     return padrao;
   }
-}
-
-function chavePosts() {
-  return usuarioAtual
-    ? "zui_posts_" + usuarioAtual.id
-    : null;
-}
-
-function minhasPublicacoes() {
-  const chave = chavePosts();
-  if (!chave) return [];
-
-  const posts = lerLocal(chave,[]);
-  return Array.isArray(posts) ? posts : [];
-}
-
-function todosPosts() {
-  return [...minhasPublicacoes(),...exemplos];
 }
 
 function chaveCurtidas() {
@@ -746,8 +813,88 @@ function curtidasSalvas() {
   const chave = chaveCurtidas();
   if (!chave) return [];
 
-  const curtidas = lerLocal(chave,[]);
-  return Array.isArray(curtidas) ? curtidas : [];
+  const lista = lerLocal(chave,[]);
+  return Array.isArray(lista) ? lista : [];
+}
+
+function todosPosts() {
+  return [...publicacoesRemotas,...exemplos];
+}
+
+function formatarPost(linha) {
+  const meuPost =
+    usuarioAtual && linha.user_id === usuarioAtual.id;
+
+  let data = "Data indisponível";
+
+  if (linha.created_at) {
+    const instante = new Date(linha.created_at);
+
+    if (!Number.isNaN(instante.getTime())) {
+      data = instante.toLocaleString("pt-BR");
+    }
+  }
+
+  return {
+    id:"supabase-" + linha.id,
+    autor:meuPost
+      ? (usuarioAtual.email || "Usuário").split("@")[0]
+      : "Usuário ZUI",
+    texto:linha.conteudo,
+    data
+  };
+}
+
+async function carregarPublicacoes() {
+  const sequencia = ++carregamentoAtual;
+  const idUsuario = usuarioAtual?.id || null;
+
+  const status = document.getElementById("statusFeed");
+
+  if (!idUsuario) {
+    status.textContent =
+      "Entre na sua conta para visualizar as publicações compartilhadas.";
+    atualizarFeed();
+    return;
+  }
+
+  status.textContent = "Carregando publicações do ZUI...";
+
+  try {
+    const {data,error} = await db
+      .from("publicacoes")
+      .select("id,created_at,conteudo,user_id")
+      .order("created_at",{ascending:false})
+      .limit(100);
+
+    if (error) throw error;
+
+    if (
+      sequencia !== carregamentoAtual ||
+      usuarioAtual?.id !== idUsuario
+    ) return;
+
+    publicacoesRemotas = (data || []).map(formatarPost);
+
+    status.textContent =
+      "Publicações compartilhadas entre usuários conectados. " +
+      "Exibindo até 100 publicações recentes.";
+
+    atualizarFeed();
+
+  } catch(erro) {
+    if (
+      sequencia !== carregamentoAtual ||
+      usuarioAtual?.id !== idUsuario
+    ) return;
+
+    status.textContent =
+      "Não foi possível carregar as publicações do Supabase. " +
+      "Confira a Data API e as políticas RLS. Detalhes: " +
+      traduzirErro(erro);
+
+    atualizarFeed();
+  }
 }
 
 function criarPost(post) {
@@ -784,7 +931,11 @@ function criarPost(post) {
 
   function atualizarCurtir() {
     const marcado = curtidasSalvas().includes(post.id);
-    curtir.textContent = marcado ? "💛 Curtido" : "🤍 Curtir";
+
+    curtir.textContent = marcado
+      ? "💛 Curtido"
+      : "🤍 Curtir";
+
     curtir.classList.toggle("marcado",marcado);
     curtir.setAttribute("aria-pressed",String(marcado));
   }
@@ -811,7 +962,9 @@ function criarPost(post) {
         chaveCurtidas(),
         JSON.stringify(lista)
       );
+
       atualizarCurtir();
+
     } catch {
       alert("Não foi possível salvar a curtida.");
     }
@@ -819,6 +972,7 @@ function criarPost(post) {
 
   const comentar = document.createElement("button");
   comentar.textContent = "💬 Comentar";
+
   comentar.onclick = () => {
     alert("Comentários chegarão em uma próxima versão.");
   };
@@ -827,8 +981,8 @@ function criarPost(post) {
   compartilhar.textContent = "↗ Compartilhar";
 
   compartilhar.onclick = async () => {
-    const texto = post.texto +
-      "\n\nZUI — Onde se vê algo novo!";
+    const texto =
+      post.texto + "\n\nZUI — Onde se vê algo novo!";
 
     try {
       if (navigator.share) {
@@ -836,13 +990,16 @@ function criarPost(post) {
           title:"ZUI",
           text:texto
         });
+
       } else if (navigator.clipboard) {
         await navigator.clipboard.writeText(texto);
         alert("Texto copiado!");
+
       } else {
         alert("Compartilhamento indisponível.");
       }
-    } catch (erro) {
+
+    } catch(erro) {
       if (erro.name !== "AbortError") {
         alert("Não foi possível compartilhar.");
       }
@@ -874,6 +1031,7 @@ function desenhar(lista,destino) {
 
 function atualizarFeed() {
   desenhar(todosPosts(),"feed");
+  pesquisar();
 }
 
 function pesquisar() {
@@ -892,7 +1050,7 @@ function pesquisar() {
 document.getElementById("pesquisa")
   .addEventListener("input",pesquisar);
 
-document.getElementById("publicarBtn").onclick = () => {
+document.getElementById("publicarBtn").onclick = async () => {
   if (!usuarioAtual) {
     mostrarArea("conta");
     mensagem("Cadastre-se ou entre para publicar.");
@@ -903,35 +1061,49 @@ document.getElementById("publicarBtn").onclick = () => {
   const texto = campo.value.trim();
 
   if (!texto) {
-    alert("Escreva algo antes de publicar!");
+    avisoPost("Escreva algo antes de publicar!");
     return;
   }
 
-  const lista = minhasPublicacoes();
+  const botao = document.getElementById("publicarBtn");
+  const idUsuario = usuarioAtual.id;
 
-  lista.unshift({
-    id:"post-" + Date.now() + "-" +
-      Math.random().toString(36).slice(2),
-    autor:usuarioAtual.email.split("@")[0],
-    texto:texto,
-    data:new Date().toLocaleString("pt-BR")
-  });
+  botao.disabled = true;
+  avisoPost("Publicando no ZUI...");
 
   try {
-    localStorage.setItem(
-      chavePosts(),
-      JSON.stringify(lista)
-    );
+    const {error} = await db
+      .from("publicacoes")
+      .insert({
+        conteudo:texto,
+        user_id:idUsuario
+      });
+
+    if (error) throw error;
 
     campo.value = "";
-    atualizarFeed();
 
-    alert("Publicação salva neste navegador!");
+    avisoPost(
+      "Publicação salva no Supabase! " +
+      "Outros usuários conectados poderão vê-la."
+    );
 
-  } catch {
-    alert("Não foi possível salvar sua publicação.");
+    await carregarPublicacoes();
+
+  } catch(erro) {
+    avisoPost(
+      "Não foi possível publicar: " +
+      traduzirErro(erro) +
+      ". Seu texto foi mantido para você tentar novamente."
+    );
+
+  } finally {
+    botao.disabled = false;
   }
 };
+
+// Os dados locais da versão anterior não são apagados.
+// Eles não serão publicados automaticamente na rede.
 
 db.auth.onAuthStateChange((_evento,sessao) => {
   atualizarUsuario(sessao?.user || null);
@@ -941,7 +1113,11 @@ db.auth.getSession().then(({data,error}) => {
   if (error) {
     console.error("Erro de autenticação:",error);
   }
+
   atualizarUsuario(data?.session?.user || null);
+
+}).catch(erro => {
+  console.error("Erro ao verificar sessão:",erro);
 });
 
 atualizarFeed();
