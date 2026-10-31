@@ -1,1 +1,83 @@
 
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ZUI - Onde se vê algo novo!</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #06152f, #123e7a);
+      color: white;
+      text-align: center;
+    }
+    header { padding: 60px 20px 25px; }
+    .logo {
+      font-size: clamp(80px, 17vw, 150px);
+      font-weight: 900;
+      color: #1167d8;
+      text-shadow: 0 0 20px #238aff;
+      letter-spacing: 5px;
+    }
+    .logo span { color: #f5bc47; }
+    h1 { font-size: 27px; }
+    h1 strong { color: #f5bc47; }
+    p { color: #dbe8ff; line-height: 1.7; }
+    .botao {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 16px 32px;
+      border-radius: 30px;
+      background: #f5bc47;
+      color: #071b38;
+      font-weight: bold;
+      text-decoration: none;
+    }
+    section { padding: 20px; }
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin: 30px auto;
+      max-width: 850px;
+    }
+    .card {
+      flex: 1 1 180px;
+      background: #ffffff13;
+      border: 1px solid #ffffff30;
+      border-radius: 15px;
+      padding: 25px;
+    }
+    footer { padding: 40px 20px; color: #b9c9e2; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">ZU<span>i</span></div>
+    <h1>Onde se vê <strong>algo novo!</strong></h1>
+    <p>Descubra. Compartilhe. Conecte-se.</p>
+    <a class="botao" href="#descobrir">Conheça o ZUI</a>
+  </header>
+
+  <section id="descobrir">
+    <h2>Um mundo de descobertas!</h2>
+    <p>Uma nova maneira de compartilhar o que você ama.</p>
+    <div class="cards">
+      <div class="card">🎬<h3>Vídeos</h3>Compartilhe suas histórias.</div>
+      <div class="card">📸<h3>Fotos</h3>Mostre seu mundo.</div>
+      <div class="card">📝<h3>Textos</h3>Compartilhe suas ideias.</div>
+      <div class="card">🌎<h3>Comunidades</h3>Conheça novas pessoas.</div>
+    </div>
+  </section>
+
+  <footer>
+    ZUI © 2026 — Onde se vê algo novo!
+  </footer>
+</body>
+</html>
+
