@@ -6,7 +6,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#071832">
 <title>ZUI — Onde se vê algo novo!</title>
-
 <style>
 :root {
   --azul:#071832;
@@ -16,9 +15,7 @@
   --branco:#eef5ff;
   --cinza:#b7c9e4;
 }
-
-* { box-sizing:border-box; }
-
+* {box-sizing:border-box}
 body {
   margin:0;
   background:linear-gradient(125deg,#061329,#123568);
@@ -26,18 +23,14 @@ body {
   font-family:Arial,Helvetica,sans-serif;
   min-height:100vh;
 }
-
-button,input,textarea { font:inherit; }
-button { cursor:pointer; }
-button:disabled { cursor:wait; opacity:.65; }
-
-button:focus-visible,
-input:focus-visible,
+button,input,textarea {font:inherit}
+button {cursor:pointer}
+button:disabled {opacity:.6;cursor:wait}
+button:focus-visible,input:focus-visible,
 textarea:focus-visible {
   outline:2px solid var(--ouro);
   outline-offset:2px;
 }
-
 header {
   position:sticky;
   top:0;
@@ -50,25 +43,11 @@ header {
   justify-content:space-between;
   gap:12px;
 }
-
-.marca {
-  font-size:31px;
-  font-weight:900;
-  color:var(--ouro);
-}
-
-.submarca {
-  font-size:12px;
-  color:var(--cinza);
-}
-
+.marca {font-size:31px;font-weight:900;color:var(--ouro)}
+.submarca {font-size:12px;color:var(--cinza)}
 .topo-direito {
-  display:flex;
-  align-items:center;
-  gap:10px;
-  flex-wrap:wrap;
+  display:flex;align-items:center;gap:10px;flex-wrap:wrap;
 }
-
 .layout {
   max-width:1250px;
   margin:25px auto;
@@ -78,7 +57,6 @@ header {
   gap:20px;
   align-items:start;
 }
-
 .painel,.post {
   background:var(--azul2);
   border:1px solid #ffffff22;
@@ -86,12 +64,7 @@ header {
   padding:20px;
   margin-bottom:17px;
 }
-
-.menu {
-  position:sticky;
-  top:85px;
-}
-
+.menu {position:sticky;top:85px}
 .menu button {
   display:block;
   width:100%;
@@ -103,13 +76,10 @@ header {
   margin:4px 0;
   border-radius:12px;
 }
-
-.menu button:hover,
-.menu button.ativo {
+.menu button:hover,.menu button.ativo {
   background:var(--azul3);
   color:var(--ouro);
 }
-
 .logo {
   display:block;
   width:100%;
@@ -117,16 +87,12 @@ header {
   margin:auto;
   border-radius:12px;
 }
-
-.apresentacao { text-align:center; }
-.apresentacao p { color:var(--cinza); }
-
-h2 { margin:0 0 17px; font-size:23px; }
-h3 { margin:0 0 12px; font-size:18px; }
-p { line-height:1.6; }
-
-.suave { color:var(--cinza); }
-
+.apresentacao {text-align:center}
+.apresentacao p {color:var(--cinza)}
+h2 {margin:0 0 17px;font-size:23px}
+h3 {margin:0 0 12px;font-size:18px}
+p {line-height:1.6}
+.suave {color:var(--cinza)}
 .dourado {
   background:var(--ouro);
   border:0;
@@ -135,9 +101,7 @@ p { line-height:1.6; }
   color:#071832;
   font-weight:bold;
 }
-
-.dourado:hover { background:#ffd477; }
-
+.dourado:hover {background:#ffd477}
 .secundario {
   background:#224578;
   border:1px solid #ffffff25;
@@ -145,7 +109,6 @@ p { line-height:1.6; }
   color:white;
   padding:11px 15px;
 }
-
 .campo {
   display:block;
   width:100%;
@@ -156,18 +119,8 @@ p { line-height:1.6; }
   margin:10px 0 16px;
   color:white;
 }
-
-textarea.campo {
-  min-height:110px;
-  resize:vertical;
-}
-
-label {
-  display:block;
-  font-weight:bold;
-  font-size:14px;
-}
-
+textarea.campo {min-height:110px;resize:vertical}
+label {display:block;font-weight:bold;font-size:14px}
 .acoes {
   display:flex;
   justify-content:space-between;
@@ -175,10 +128,8 @@ label {
   flex-wrap:wrap;
   gap:10px;
 }
-
-.area { display:none; }
-.area.visivel { display:block; }
-
+.area {display:none}
+.area.visivel {display:block}
 .avatar {
   height:43px;
   width:43px;
@@ -189,25 +140,18 @@ label {
   font-weight:bold;
   flex-shrink:0;
 }
-
 .autor {
   display:flex;
   align-items:center;
   gap:12px;
   margin-bottom:15px;
 }
-
-.data {
-  font-size:12px;
-  color:var(--cinza);
-}
-
+.data {font-size:12px;color:var(--cinza)}
 .conteudo {
   white-space:pre-wrap;
   overflow-wrap:anywhere;
   line-height:1.65;
 }
-
 .botoes {
   display:flex;
   flex-wrap:wrap;
@@ -216,7 +160,6 @@ label {
   padding-top:15px;
   margin-top:16px;
 }
-
 .botoes button {
   background:#1b3b6a;
   color:white;
@@ -224,12 +167,10 @@ label {
   padding:10px 13px;
   border-radius:10px;
 }
-
 .botoes button.marcado {
   color:var(--ouro);
   border-color:var(--ouro);
 }
-
 .tag {
   display:inline-block;
   padding:9px 12px;
@@ -238,20 +179,17 @@ label {
   border-radius:25px;
   font-size:13px;
 }
-
 .comunidade {
   background:#173b70;
   padding:16px;
   border-radius:12px;
   margin:12px 0;
 }
-
 .aviso {
   color:var(--ouro);
   font-size:13px;
   line-height:1.6;
 }
-
 .mensagem {
   margin-top:15px;
   padding:12px;
@@ -261,27 +199,21 @@ label {
   white-space:pre-wrap;
   overflow-wrap:anywhere;
 }
-
-.escondido { display:none!important; }
-
+.escondido {display:none!important}
 .rodape {
   text-align:center;
   padding:35px 15px;
   color:var(--cinza);
   font-size:13px;
 }
-
 @media(max-width:1050px) {
-  .layout {
-    grid-template-columns:185px minmax(0,1fr);
-  }
-  .lateral { display:none; }
+  .layout {grid-template-columns:185px minmax(0,1fr)}
+  .lateral {display:none}
 }
-
 @media(max-width:650px) {
-  header { padding:12px; }
-  .marca { font-size:25px; }
-  .layout { display:block; padding:0 12px; }
+  header {padding:12px}
+  .marca {font-size:25px}
+  .layout {display:block;padding:0 12px}
   .menu {
     position:static;
     display:flex;
@@ -294,22 +226,18 @@ label {
     flex-shrink:0;
     padding:11px;
   }
-  .painel,.post { padding:15px; }
-  .topo-direito { font-size:12px; }
+  .painel,.post {padding:15px}
+  .topo-direito {font-size:12px}
 }
 </style>
-
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 </head>
-
 <body>
-
 <header>
   <div>
     <div class="marca">ZUI</div>
     <div class="submarca">Onde se vê algo novo!</div>
   </div>
-
   <div class="topo-direito">
     <span id="statusConta">Visitante</span>
     <button id="btnEntrar" class="dourado">
@@ -322,7 +250,6 @@ label {
 </header>
 
 <div class="layout">
-
 <aside>
   <nav class="painel menu" aria-label="Menu principal">
     <button class="ativo" data-area="inicio">🏠 Início</button>
@@ -335,58 +262,36 @@ label {
 </aside>
 
 <main>
-
 <section id="inicio" class="area visivel">
-
   <div class="painel apresentacao">
-    <img
-      class="logo"
+    <img class="logo"
       src="Logo%203D%20ZUI%20com%20%C3%93rbita%20Dourada.png"
-      alt="ZUI — Onde se vê algo novo!"
-    >
+      alt="ZUI — Onde se vê algo novo!">
     <p>Descubra. Compartilhe. Conecte-se.</p>
   </div>
 
   <div class="painel">
     <h2>Compartilhe algo novo!</h2>
-
-    <textarea
-      id="textoPost"
-      class="campo"
+    <textarea id="textoPost" class="campo"
       maxlength="2000"
-      placeholder="O que você gostaria de compartilhar hoje?"
-    ></textarea>
-
+      placeholder="O que você gostaria de compartilhar hoje?"></textarea>
     <div class="acoes">
       <span class="suave">✍️ Publicação de texto</span>
       <button id="publicarBtn" class="dourado">
         Publicar no ZUI
       </button>
     </div>
-
     <p class="aviso">
       Entre na sua conta para publicar.
-      As novas publicações são salvas no Supabase
-      e podem ser vistas por outros usuários conectados.
+      As publicações são salvas no Supabase e
+      compartilhadas com outros usuários conectados.
     </p>
-
-    <div
-      id="mensagemPost"
-      class="mensagem escondido"
-      role="status"
-      aria-live="polite"
-    ></div>
+    <div id="mensagemPost" class="mensagem escondido"
+      role="status" aria-live="polite"></div>
   </div>
-
   <h2>✨ Descobertas para você</h2>
-
-  <p
-    id="statusFeed"
-    class="suave"
-    role="status"
-    aria-live="polite"
-  ></p>
-
+  <p id="statusFeed" class="suave" role="status"
+    aria-live="polite"></p>
   <div id="feed"></div>
 </section>
 
@@ -394,12 +299,8 @@ label {
   <div class="painel">
     <h2>🔎 Explorar</h2>
     <p class="suave">Descubra publicações e ideias.</p>
-
-    <input
-      id="pesquisa"
-      class="campo"
-      placeholder="Pesquisar publicações..."
-    >
+    <input id="pesquisa" class="campo"
+      placeholder="Pesquisar publicações...">
   </div>
   <div id="resultados"></div>
 </section>
@@ -408,14 +309,11 @@ label {
   <div class="painel">
     <h2>➕ Publicar no ZUI</h2>
     <p>Compartilhe suas descobertas!</p>
-
     <button id="irPublicar" class="dourado">
       Escrever publicação
     </button>
-
     <p class="aviso">
-      Fotos e vídeos serão adicionados
-      nas próximas versões.
+      Fotos e vídeos serão adicionados nas próximas versões.
     </p>
   </div>
 </section>
@@ -423,13 +321,11 @@ label {
 <section id="comunidades" class="area">
   <div class="painel">
     <h2>🌎 Comunidades</h2>
-
     <div class="comunidade">💻 Tecnologia e inovação</div>
     <div class="comunidade">🎨 Arte e criatividade</div>
     <div class="comunidade">📚 Educação e conhecimento</div>
     <div class="comunidade">🎬 Cinema e entretenimento</div>
     <div class="comunidade">🌱 Natureza e descobertas</div>
-
     <p class="aviso">
       Comunidades ilustrativas nesta versão.
     </p>
@@ -439,9 +335,8 @@ label {
 <section id="perfil" class="area">
   <div class="painel">
     <h2>👤 Meu perfil</h2>
-
     <div class="autor">
-      <div class="avatar">Z</div>
+      <div class="avatar" id="avatarPerfil">Z</div>
       <div>
         <strong id="perfilNome">Visitante</strong>
         <div class="data" id="perfilEmail">
@@ -450,14 +345,32 @@ label {
       </div>
     </div>
 
-    <p class="suave">
-      Aqui teremos foto, biografia,
-      seguidores e publicações.
-    </p>
+    <div id="formPerfil" class="escondido">
+      <label for="nomeExibicao">
+        Nome de exibição no ZUI
+      </label>
+      <input id="nomeExibicao" class="campo"
+        type="text" maxlength="60"
+        autocomplete="nickname"
+        placeholder="Exemplo: Vagner Diniz">
+      <button id="salvarPerfilBtn" class="dourado">
+        Salvar meu nome
+      </button>
+      <div id="mensagemPerfil"
+        class="mensagem escondido"
+        role="status" aria-live="polite"></div>
+      <p class="aviso">
+        Seu nome de exibição será público.
+        Seu e-mail continuará privado.
+      </p>
+    </div>
 
-    <p class="aviso">
-      O perfil social completo será construído
-      em uma próxima etapa.
+    <p id="avisoPerfilVisitante" class="aviso">
+      Entre na sua conta para escolher seu nome.
+    </p>
+    <p class="suave">
+      Foto de perfil, biografia e seguidores
+      serão adicionados nas próximas versões.
     </p>
   </div>
 </section>
@@ -465,49 +378,32 @@ label {
 <section id="conta" class="area">
   <div class="painel">
     <h2>🔐 Sua conta ZUI</h2>
-
     <div id="formConta">
       <p class="suave">
-        Cadastre-se gratuitamente com
-        seu e-mail e uma senha.
+        Cadastre-se gratuitamente com seu e-mail e senha.
       </p>
-
       <label for="email">Seu e-mail</label>
-      <input
-        id="email"
-        class="campo"
-        type="email"
+      <input id="email" class="campo" type="email"
         autocomplete="email"
-        placeholder="seuemail@exemplo.com"
-      >
-
+        placeholder="seuemail@exemplo.com">
       <label for="senha">Sua senha</label>
-      <input
-        id="senha"
-        class="campo"
-        type="password"
-        autocomplete="current-password"
-        minlength="6"
-        placeholder="Sua senha"
-      >
-
+      <input id="senha" class="campo" type="password"
+        autocomplete="current-password" minlength="6"
+        placeholder="Sua senha">
       <div class="acoes">
         <button id="cadastrarBtn" class="dourado">
           Criar minha conta
         </button>
-
         <button id="loginBtn" class="secundario">
           Já tenho conta — Entrar
         </button>
       </div>
-
       <p class="aviso">
         Ao cadastrar-se, confira seu e-mail
         para confirmar a conta.
         Nunca compartilhe sua senha.
       </p>
     </div>
-
     <div id="contaAtiva" class="escondido">
       <h3>💛 Você está conectado!</h3>
       <p id="emailAtivo"></p>
@@ -515,16 +411,10 @@ label {
         Seu acesso é autenticado pelo Supabase.
       </p>
     </div>
-
-    <div
-      id="mensagemAuth"
-      class="mensagem escondido"
-      role="status"
-      aria-live="polite"
-    ></div>
+    <div id="mensagemAuth" class="mensagem escondido"
+      role="status" aria-live="polite"></div>
   </div>
 </section>
-
 </main>
 
 <aside class="lateral">
@@ -535,46 +425,42 @@ label {
     <span class="tag">#Conhecimento</span>
     <span class="tag">#Criatividade</span>
   </div>
-
   <div class="painel">
     <h3>💙 Bem-vindo ao ZUI!</h3>
     <p class="suave">
-      Um lugar para descobrir, aprender
-      e compartilhar.
+      Um lugar para descobrir, aprender e compartilhar.
     </p>
     <p class="aviso">
       Plataforma em desenvolvimento.
     </p>
   </div>
 </aside>
-
 </div>
 
 <footer class="rodape">
   ZUI © 2026 — Onde se vê algo novo!
-  <p>Versão experimental 1.3</p>
+  <p>Versão experimental 1.4</p>
 </footer>
 
 <script>
 "use strict";
 
-// Apenas chave pública.
-// A proteção dos dados depende das políticas RLS no Supabase.
-
+// Chave pública. Nunca utilizar service_role no HTML.
 const SUPABASE_URL =
   "https://kplohqpdfzwcsaiprpum.supabase.co";
-
 const SUPABASE_KEY =
   "sb_publishable_3S6tYlctAhS_ON8ZLPqBFg_Nw4JTEct";
 
 const db = window.supabase.createClient(
-  SUPABASE_URL,
-  SUPABASE_KEY
+  SUPABASE_URL,SUPABASE_KEY
 );
 
 let usuarioAtual = null;
+let perfilAtual = null;
 let publicacoesRemotas = [];
+let nomesPublicos = new Map();
 let carregamentoAtual = 0;
+let consultaPerfilAtual = 0;
 
 const exemplos = [
   {
@@ -591,101 +477,91 @@ const exemplos = [
   }
 ];
 
+function elemento(id) {
+  return document.getElementById(id);
+}
+
 function mostrarArea(nome) {
   document.querySelectorAll(".area").forEach(area => {
-    area.classList.toggle("visivel", area.id === nome);
+    area.classList.toggle("visivel",area.id === nome);
   });
-
   document.querySelectorAll(".menu button").forEach(botao => {
     botao.classList.toggle(
-      "ativo",
-      botao.dataset.area === nome
+      "ativo",botao.dataset.area === nome
     );
   });
-
   if (nome === "explorar") pesquisar();
-
   window.scrollTo(0,0);
 }
 
 document.querySelectorAll(".menu button").forEach(botao => {
-  botao.addEventListener("click", () => {
+  botao.addEventListener("click",() => {
     mostrarArea(botao.dataset.area);
   });
 });
 
-document.getElementById("btnEntrar").onclick = () => {
-  mostrarArea("conta");
+elemento("btnEntrar").onclick = () => mostrarArea("conta");
+
+elemento("irPublicar").onclick = () => {
+  mostrarArea("inicio");
+  elemento("textoPost").focus();
 };
 
-document.getElementById("irPublicar").onclick = () => {
-  mostrarArea("inicio");
-  document.getElementById("textoPost").focus();
-};
+function exibirMensagem(id,texto) {
+  const caixa = elemento(id);
+  caixa.textContent = texto;
+  caixa.classList.remove("escondido");
+}
 
 function mensagem(texto) {
-  const elemento = document.getElementById("mensagemAuth");
-  elemento.textContent = texto;
-  elemento.classList.remove("escondido");
+  exibirMensagem("mensagemAuth",texto);
 }
 
 function avisoPost(texto) {
-  const elemento = document.getElementById("mensagemPost");
-  elemento.textContent = texto;
-  elemento.classList.remove("escondido");
+  exibirMensagem("mensagemPost",texto);
+}
+
+function mensagemPerfil(texto) {
+  exibirMensagem("mensagemPerfil",texto);
 }
 
 function traduzirErro(erro) {
   const texto = erro?.message || "Erro desconhecido";
-
-  if (texto.includes("Invalid login credentials")) {
+  if (texto.includes("Invalid login credentials"))
     return "E-mail ou senha incorretos.";
-  }
-
-  if (texto.includes("Email not confirmed")) {
+  if (texto.includes("Email not confirmed"))
     return "Confirme seu e-mail antes de entrar.";
-  }
-
-  if (texto.includes("already registered")) {
+  if (texto.includes("already registered"))
     return "Este e-mail já possui cadastro.";
-  }
-
-  if (texto.toLowerCase().includes("rate limit")) {
-    return "Limite temporário de tentativas. Tente novamente mais tarde.";
-  }
-
+  if (texto.toLowerCase().includes("rate limit"))
+    return "Limite temporário de tentativas.";
   return texto;
 }
 
 function dadosLogin() {
-  const email = document.getElementById("email").value.trim();
-  const senha = document.getElementById("senha").value;
-
+  const email = elemento("email").value.trim();
+  const senha = elemento("senha").value;
   if (!email || !senha) {
     mensagem("Preencha o e-mail e a senha.");
     return null;
   }
-
   if (senha.length < 6) {
     mensagem("A senha deve ter pelo menos 6 caracteres.");
     return null;
   }
-
   return {email,senha};
 }
 
 function bloquearBotoes(valor) {
-  document.getElementById("cadastrarBtn").disabled = valor;
-  document.getElementById("loginBtn").disabled = valor;
+  elemento("cadastrarBtn").disabled = valor;
+  elemento("loginBtn").disabled = valor;
 }
 
-document.getElementById("cadastrarBtn").onclick = async () => {
+elemento("cadastrarBtn").onclick = async () => {
   const dados = dadosLogin();
   if (!dados) return;
-
   bloquearBotoes(true);
   mensagem("Enviando cadastro...");
-
   try {
     const {data,error} = await db.auth.signUp({
       email:dados.email,
@@ -695,21 +571,11 @@ document.getElementById("cadastrarBtn").onclick = async () => {
           "https://contatozoopai-oss.github.io/ZUI/"
       }
     });
-
     if (error) throw error;
-
-    if (data.session) {
-      mensagem("Conta criada! Você já pode usar o ZUI.");
-    } else {
-      mensagem(
-        "Solicitação recebida! Se necessário, " +
-        "você receberá um e-mail de confirmação. " +
-        "Verifique também a pasta de spam."
-      );
-    }
-
-    document.getElementById("senha").value = "";
-
+    mensagem(data.session
+      ? "Conta criada! Você já pode usar o ZUI."
+      : "Solicitação recebida! Se necessário, confira seu e-mail de confirmação e a pasta de spam.");
+    elemento("senha").value = "";
   } catch(erro) {
     mensagem(traduzirErro(erro));
   } finally {
@@ -717,25 +583,20 @@ document.getElementById("cadastrarBtn").onclick = async () => {
   }
 };
 
-document.getElementById("loginBtn").onclick = async () => {
+elemento("loginBtn").onclick = async () => {
   const dados = dadosLogin();
   if (!dados) return;
-
   bloquearBotoes(true);
   mensagem("Entrando na sua conta...");
-
   try {
     const {error} = await db.auth.signInWithPassword({
       email:dados.email,
       password:dados.senha
     });
-
     if (error) throw error;
-
     mensagem("Bem-vindo ao ZUI!");
-    document.getElementById("senha").value = "";
+    elemento("senha").value = "";
     mostrarArea("inicio");
-
   } catch(erro) {
     mensagem(traduzirErro(erro));
   } finally {
@@ -743,9 +604,8 @@ document.getElementById("loginBtn").onclick = async () => {
   }
 };
 
-document.getElementById("btnSair").onclick = async () => {
+elemento("btnSair").onclick = async () => {
   const {error} = await db.auth.signOut();
-
   if (error) {
     alert(traduzirErro(error));
   } else {
@@ -754,45 +614,142 @@ document.getElementById("btnSair").onclick = async () => {
 };
 
 function atualizarUsuario(usuario) {
-  const idAnterior = usuarioAtual?.id || null;
-
+  const anterior = usuarioAtual?.id || null;
   usuarioAtual = usuario || null;
-
   const conectado = !!usuarioAtual;
 
-  document.getElementById("btnEntrar")
-    .classList.toggle("escondido",conectado);
+  elemento("btnEntrar").classList.toggle(
+    "escondido",conectado
+  );
+  elemento("btnSair").classList.toggle(
+    "escondido",!conectado
+  );
+  elemento("formConta").classList.toggle(
+    "escondido",conectado
+  );
+  elemento("contaAtiva").classList.toggle(
+    "escondido",!conectado
+  );
+  elemento("formPerfil").classList.toggle(
+    "escondido",!conectado
+  );
+  elemento("avisoPerfilVisitante").classList.toggle(
+    "escondido",conectado
+  );
 
-  document.getElementById("btnSair")
-    .classList.toggle("escondido",!conectado);
-
-  document.getElementById("formConta")
-    .classList.toggle("escondido",conectado);
-
-  document.getElementById("contaAtiva")
-    .classList.toggle("escondido",!conectado);
-
-  const nome = conectado
+  const nomeInicial = conectado
     ? (usuarioAtual.email || "Usuário").split("@")[0]
     : "Visitante";
 
-  document.getElementById("statusConta").textContent = nome;
-  document.getElementById("perfilNome").textContent = nome;
+  elemento("statusConta").textContent = nomeInicial;
+  elemento("perfilNome").textContent = nomeInicial;
+  elemento("perfilEmail").textContent = conectado
+    ? usuarioAtual.email
+    : "Entre para ver sua conta";
+  elemento("emailAtivo").textContent = conectado
+    ? usuarioAtual.email : "";
+  elemento("avatarPerfil").textContent =
+    nomeInicial.charAt(0).toUpperCase();
 
-  document.getElementById("perfilEmail").textContent =
-    conectado
-      ? (usuarioAtual.email || "")
-      : "Entre para ver sua conta";
-
-  document.getElementById("emailAtivo").textContent =
-    conectado ? (usuarioAtual.email || "") : "";
-
-  if (idAnterior !== (usuarioAtual?.id || null)) {
+  if (anterior !== (usuarioAtual?.id || null)) {
+    perfilAtual = null;
+    nomesPublicos = new Map();
     publicacoesRemotas = [];
+    elemento("nomeExibicao").value = "";
+    elemento("mensagemPerfil").classList.add("escondido");
+    ++consultaPerfilAtual;
+    ++carregamentoAtual;
     atualizarFeed();
+    if (conectado) carregarPerfil();
     carregarPublicacoes();
   }
 }
+
+function aplicarNomeNaTela() {
+  if (!usuarioAtual) return;
+  const nome = perfilAtual?.nome_exibicao;
+  const provisório =
+    (usuarioAtual.email || "Usuário").split("@")[0];
+
+  elemento("statusConta").textContent = nome || provisório;
+  elemento("perfilNome").textContent =
+    nome || "Escolha seu nome";
+  elemento("avatarPerfil").textContent =
+    (nome || provisório).charAt(0).toUpperCase();
+  elemento("nomeExibicao").value = nome || "";
+}
+
+async function carregarPerfil() {
+  const id = usuarioAtual?.id;
+  if (!id) return;
+  const numero = ++consultaPerfilAtual;
+  try {
+    const {data,error} = await db
+      .from("perfis")
+      .select("id,nome_exibicao")
+      .eq("id",id)
+      .maybeSingle();
+
+    if (error) throw error;
+    if (numero !== consultaPerfilAtual ||
+        usuarioAtual?.id !== id) return;
+
+    perfilAtual = data;
+    if (data) nomesPublicos.set(id,data.nome_exibicao);
+    aplicarNomeNaTela();
+    atualizarFeed();
+  } catch(erro) {
+    if (usuarioAtual?.id === id) {
+      mensagemPerfil(
+        "Não foi possível carregar seu perfil: " +
+        traduzirErro(erro)
+      );
+    }
+  }
+}
+
+elemento("salvarPerfilBtn").onclick = async () => {
+  const id = usuarioAtual?.id;
+  if (!id) {
+    mostrarArea("conta");
+    return;
+  }
+  const nome = elemento("nomeExibicao").value
+    .trim().replace(/\s+/g," ");
+
+  if (nome.length < 2 || nome.length > 60) {
+    mensagemPerfil("Escolha um nome entre 2 e 60 caracteres.");
+    return;
+  }
+
+  const botao = elemento("salvarPerfilBtn");
+  botao.disabled = true;
+  mensagemPerfil("Salvando seu nome...");
+
+  try {
+    const {error} = await db.from("perfis")
+      .upsert({
+        id:id,
+        nome_exibicao:nome
+      },{onConflict:"id"});
+
+    if (error) throw error;
+    if (usuarioAtual?.id !== id) return;
+
+    perfilAtual = {id,nome_exibicao:nome};
+    nomesPublicos.set(id,nome);
+    aplicarNomeNaTela();
+    atualizarFeed();
+    mensagemPerfil("Nome salvo! Seu nome agora é " + nome + ".");
+    await carregarPublicacoes();
+  } catch(erro) {
+    mensagemPerfil(
+      "Não foi possível salvar: " + traduzirErro(erro)
+    );
+  } finally {
+    botao.disabled = false;
+  }
+};
 
 function lerLocal(chave,padrao) {
   try {
@@ -805,14 +762,12 @@ function lerLocal(chave,padrao) {
 
 function chaveCurtidas() {
   return usuarioAtual
-    ? "zui_likes_" + usuarioAtual.id
-    : null;
+    ? "zui_likes_" + usuarioAtual.id : null;
 }
 
 function curtidasSalvas() {
   const chave = chaveCurtidas();
   if (!chave) return [];
-
   const lista = lerLocal(chave,[]);
   return Array.isArray(lista) ? lista : [];
 }
@@ -822,34 +777,43 @@ function todosPosts() {
 }
 
 function formatarPost(linha) {
-  const meuPost =
-    usuarioAtual && linha.user_id === usuarioAtual.id;
-
   let data = "Data indisponível";
-
   if (linha.created_at) {
     const instante = new Date(linha.created_at);
-
     if (!Number.isNaN(instante.getTime())) {
       data = instante.toLocaleString("pt-BR");
     }
   }
-
   return {
     id:"supabase-" + linha.id,
-    autor:meuPost
-      ? (usuarioAtual.email || "Usuário").split("@")[0]
-      : "Usuário ZUI",
+    autor:nomesPublicos.get(linha.user_id) || "Usuário ZUI",
     texto:linha.conteudo,
     data
   };
 }
 
+async function carregarNomesPublicos(linhas) {
+  const ids = [...new Set(
+    linhas.map(linha => linha.user_id).filter(Boolean)
+  )];
+  if (!ids.length) return new Map();
+
+  const {data,error} = await db.from("perfis")
+    .select("id,nome_exibicao")
+    .in("id",ids);
+
+  if (error) throw error;
+  return new Map(
+    (data || []).map(perfil => [
+      perfil.id,perfil.nome_exibicao
+    ])
+  );
+}
+
 async function carregarPublicacoes() {
   const sequencia = ++carregamentoAtual;
   const idUsuario = usuarioAtual?.id || null;
-
-  const status = document.getElementById("statusFeed");
+  const status = elemento("statusFeed");
 
   if (!idUsuario) {
     status.textContent =
@@ -868,31 +832,32 @@ async function carregarPublicacoes() {
       .limit(100);
 
     if (error) throw error;
+    if (sequencia !== carregamentoAtual ||
+        usuarioAtual?.id !== idUsuario) return;
 
-    if (
-      sequencia !== carregamentoAtual ||
-      usuarioAtual?.id !== idUsuario
-    ) return;
+    let avisoNomes = "";
+    try {
+      nomesPublicos = await carregarNomesPublicos(data || []);
+    } catch(erro) {
+      nomesPublicos = new Map();
+      avisoNomes = " Alguns nomes não puderam ser carregados.";
+    }
+
+    if (sequencia !== carregamentoAtual ||
+        usuarioAtual?.id !== idUsuario) return;
 
     publicacoesRemotas = (data || []).map(formatarPost);
-
     status.textContent =
       "Publicações compartilhadas entre usuários conectados. " +
-      "Exibindo até 100 publicações recentes.";
-
+      "Exibindo até 100 publicações recentes." + avisoNomes;
     atualizarFeed();
 
   } catch(erro) {
-    if (
-      sequencia !== carregamentoAtual ||
-      usuarioAtual?.id !== idUsuario
-    ) return;
-
+    if (sequencia !== carregamentoAtual ||
+        usuarioAtual?.id !== idUsuario) return;
     status.textContent =
-      "Não foi possível carregar as publicações do Supabase. " +
-      "Confira a Data API e as políticas RLS. Detalhes: " +
+      "Não foi possível carregar as publicações: " +
       traduzirErro(erro);
-
     atualizarFeed();
   }
 }
@@ -903,20 +868,16 @@ function criarPost(post) {
 
   const autor = document.createElement("div");
   autor.className = "autor";
-
   const avatar = document.createElement("div");
   avatar.className = "avatar";
   avatar.textContent = post.autor.charAt(0).toUpperCase();
 
   const info = document.createElement("div");
-
   const nome = document.createElement("strong");
   nome.textContent = post.autor;
-
   const data = document.createElement("div");
   data.className = "data";
   data.textContent = post.data;
-
   info.append(nome,data);
   autor.append(avatar,info);
 
@@ -926,16 +887,12 @@ function criarPost(post) {
 
   const botoes = document.createElement("div");
   botoes.className = "botoes";
-
   const curtir = document.createElement("button");
 
   function atualizarCurtir() {
     const marcado = curtidasSalvas().includes(post.id);
-
     curtir.textContent = marcado
-      ? "💛 Curtido"
-      : "🤍 Curtir";
-
+      ? "💛 Curtido" : "🤍 Curtir";
     curtir.classList.toggle("marcado",marcado);
     curtir.setAttribute("aria-pressed",String(marcado));
   }
@@ -948,23 +905,17 @@ function criarPost(post) {
       mensagem("Entre na sua conta para curtir.");
       return;
     }
-
     let lista = curtidasSalvas();
-
     if (lista.includes(post.id)) {
       lista = lista.filter(id => id !== post.id);
     } else {
       lista.push(post.id);
     }
-
     try {
       localStorage.setItem(
-        chaveCurtidas(),
-        JSON.stringify(lista)
+        chaveCurtidas(),JSON.stringify(lista)
       );
-
       atualizarCurtir();
-
     } catch {
       alert("Não foi possível salvar a curtida.");
     }
@@ -972,33 +923,24 @@ function criarPost(post) {
 
   const comentar = document.createElement("button");
   comentar.textContent = "💬 Comentar";
-
   comentar.onclick = () => {
     alert("Comentários chegarão em uma próxima versão.");
   };
 
   const compartilhar = document.createElement("button");
   compartilhar.textContent = "↗ Compartilhar";
-
   compartilhar.onclick = async () => {
-    const texto =
-      post.texto + "\n\nZUI — Onde se vê algo novo!";
-
+    const texto = post.texto +
+      "\n\nZUI — Onde se vê algo novo!";
     try {
       if (navigator.share) {
-        await navigator.share({
-          title:"ZUI",
-          text:texto
-        });
-
+        await navigator.share({title:"ZUI",text:texto});
       } else if (navigator.clipboard) {
         await navigator.clipboard.writeText(texto);
         alert("Texto copiado!");
-
       } else {
         alert("Compartilhamento indisponível.");
       }
-
     } catch(erro) {
       if (erro.name !== "AbortError") {
         alert("Não foi possível compartilhar.");
@@ -1008,14 +950,12 @@ function criarPost(post) {
 
   botoes.append(curtir,comentar,compartilhar);
   artigo.append(autor,conteudo,botoes);
-
   return artigo;
 }
 
 function desenhar(lista,destino) {
-  const caixa = document.getElementById(destino);
+  const caixa = elemento(destino);
   caixa.replaceChildren();
-
   if (!lista.length) {
     const aviso = document.createElement("p");
     aviso.className = "suave";
@@ -1023,10 +963,7 @@ function desenhar(lista,destino) {
     caixa.append(aviso);
     return;
   }
-
-  lista.forEach(post => {
-    caixa.append(criarPost(post));
-  });
+  lista.forEach(post => caixa.append(criarPost(post)));
 }
 
 function atualizarFeed() {
@@ -1035,93 +972,78 @@ function atualizarFeed() {
 }
 
 function pesquisar() {
-  const termo = document.getElementById("pesquisa")
-    .value.trim().toLocaleLowerCase("pt-BR");
-
+  const termo = elemento("pesquisa").value
+    .trim().toLocaleLowerCase("pt-BR");
   const resultados = todosPosts().filter(post => {
     return (post.texto + " " + post.autor)
-      .toLocaleLowerCase("pt-BR")
-      .includes(termo);
+      .toLocaleLowerCase("pt-BR").includes(termo);
   });
-
   desenhar(resultados,"resultados");
 }
 
-document.getElementById("pesquisa")
-  .addEventListener("input",pesquisar);
+elemento("pesquisa").addEventListener("input",pesquisar);
 
-document.getElementById("publicarBtn").onclick = async () => {
+elemento("publicarBtn").onclick = async () => {
   if (!usuarioAtual) {
     mostrarArea("conta");
     mensagem("Cadastre-se ou entre para publicar.");
     return;
   }
 
-  const campo = document.getElementById("textoPost");
+  const campo = elemento("textoPost");
   const texto = campo.value.trim();
-
   if (!texto) {
     avisoPost("Escreva algo antes de publicar!");
     return;
   }
 
-  const botao = document.getElementById("publicarBtn");
+  const botao = elemento("publicarBtn");
   const idUsuario = usuarioAtual.id;
-
   botao.disabled = true;
   avisoPost("Publicando no ZUI...");
 
   try {
-    const {error} = await db
-      .from("publicacoes")
+    const {error} = await db.from("publicacoes")
       .insert({
         conteudo:texto,
         user_id:idUsuario
       });
 
     if (error) throw error;
-
     campo.value = "";
-
     avisoPost(
       "Publicação salva no Supabase! " +
       "Outros usuários conectados poderão vê-la."
     );
-
     await carregarPublicacoes();
 
   } catch(erro) {
     avisoPost(
       "Não foi possível publicar: " +
       traduzirErro(erro) +
-      ". Seu texto foi mantido para você tentar novamente."
+      ". Seu texto foi mantido para tentar novamente."
     );
-
   } finally {
     botao.disabled = false;
   }
 };
 
-// Os dados locais da versão anterior não são apagados.
-// Eles não serão publicados automaticamente na rede.
+// Não apaga publicações antigas do armazenamento local.
+// Curtidas continuam locais nesta versão.
+// A segurança das tabelas depende das políticas RLS.
 
 db.auth.onAuthStateChange((_evento,sessao) => {
   atualizarUsuario(sessao?.user || null);
 });
 
 db.auth.getSession().then(({data,error}) => {
-  if (error) {
-    console.error("Erro de autenticação:",error);
-  }
-
+  if (error) console.error("Erro de autenticação:",error);
   atualizarUsuario(data?.session?.user || null);
-
 }).catch(erro => {
   console.error("Erro ao verificar sessão:",erro);
 });
 
 atualizarFeed();
 </script>
-
 </body>
 </html>
