@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -139,7 +138,12 @@ label {display:block;font-weight:bold;font-size:14px}
   place-items:center;
   font-weight:bold;
   flex-shrink:0;
+  overflow:hidden;
 }
+.avatar img {width:100%;height:100%;object-fit:cover;display:block}
+.avatar.grande {width:88px;height:88px;font-size:30px}
+.foto-controles {margin:18px 0 22px}
+.foto-controles input[type="file"] {max-width:100%;margin:10px 0 12px}
 .autor {
   display:flex;
   align-items:center;
@@ -336,7 +340,7 @@ label {display:block;font-weight:bold;font-size:14px}
   <div class="painel">
     <h2>👤 Meu perfil</h2>
     <div class="autor">
-      <div class="avatar" id="avatarPerfil">Z</div>
+      <div class="avatar grande" id="avatarPerfil">Z</div>
       <div>
         <strong id="perfilNome">Visitante</strong>
         <div class="data" id="perfilEmail">
@@ -346,6 +350,13 @@ label {display:block;font-weight:bold;font-size:14px}
     </div>
 
     <div id="formPerfil" class="escondido">
+      <div class="foto-controles">
+        <label for="arquivoAvatar">📷 Escolher foto de perfil</label>
+        <input type="file" id="arquivoAvatar" accept="image/jpeg,image/png,image/webp">
+        <div><button class="dourado" id="enviarAvatarBtn">Salvar minha foto</button></div>
+        <p class="aviso">JPG, PNG ou WebP; máximo de 2 MB. A foto será pública.</p>
+        <div id="mensagemAvatar" class="mensagem escondido" role="status" aria-live="polite"></div>
+      </div>
       <label for="nomeExibicao">
         Nome de exibição no ZUI
       </label>
@@ -369,8 +380,7 @@ label {display:block;font-weight:bold;font-size:14px}
       Entre na sua conta para escolher seu nome.
     </p>
     <p class="suave">
-      Foto de perfil, biografia e seguidores
-      serão adicionados nas próximas versões.
+      Biografia e seguidores serão adicionados nas próximas versões.
     </p>
   </div>
 </section>
@@ -439,7 +449,7 @@ label {display:block;font-weight:bold;font-size:14px}
 
 <footer class="rodape">
   ZUI © 2026 — Onde se vê algo novo!
-  <p>Versão experimental 1.4</p>
+  <p>Versão experimental 1.5 — fotos de perfil</p>
 </footer>
 
 <script>
@@ -459,6 +469,7 @@ let usuarioAtual = null;
 let perfilAtual = null;
 let publicacoesRemotas = [];
 let nomesPublicos = new Map();
+let fotosPublicas = new Map();
 let carregamentoAtual = 0;
 let consultaPerfilAtual = 0;
 
@@ -648,12 +659,12 @@ function atualizarUsuario(usuario) {
     : "Entre para ver sua conta";
   elemento("emailAtivo").textContent = conectado
     ? usuarioAtual.email : "";
-  elemento("avatarPerfil").textContent =
-    nomeInicial.charAt(0).toUpperCase();
+  desenharAvatar(elemento("avatarPerfil"),nomeInicial,null);
 
   if (anterior !== (usuarioAtual?.id || null)) {
     perfilAtual = null;
     nomesPublicos = new Map();
+    fotosPublicas = new Map();
     publicacoesRemotas = [];
     elemento("nomeExibicao").value = "";
     elemento("mensagemPerfil").classList.add("escondido");
@@ -674,9 +685,24 @@ function aplicarNomeNaTela() {
   elemento("statusConta").textContent = nome || provisório;
   elemento("perfilNome").textContent =
     nome || "Escolha seu nome";
-  elemento("avatarPerfil").textContent =
-    (nome || provisório).charAt(0).toUpperCase();
+  desenharAvatar(elemento("avatarPerfil"),nome || provisório,perfilAtual?.avatar_url);
   elemento("nomeExibicao").value = nome || "";
+}
+
+function desenharAvatar(caixa,nome,url) {
+  caixa.replaceChildren();
+  if (typeof url === "string" && url.startsWith(SUPABASE_URL + "/storage/v1/object/public/avatars/")) {
+    const img = document.createElement("img");
+    img.src = url;
+    img.alt = "Foto de perfil de " + nome;
+    img.referrerPolicy = "no-referrer";
+    img.onerror = () => {
+      if (caixa.contains(img)) caixa.textContent = (nome || "Z").charAt(0).toUpperCase();
+    };
+    caixa.append(img);
+  } else {
+    caixa.textContent = (nome || "Z").charAt(0).toUpperCase();
+  }
 }
 
 async function carregarPerfil() {
@@ -686,7 +712,7 @@ async function carregarPerfil() {
   try {
     const {data,error} = await db
       .from("perfis")
-      .select("id,nome_exibicao")
+      .select("id,nome_exibicao,avatar_url")
       .eq("id",id)
       .maybeSingle();
 
@@ -695,7 +721,10 @@ async function carregarPerfil() {
         usuarioAtual?.id !== id) return;
 
     perfilAtual = data;
-    if (data) nomesPublicos.set(id,data.nome_exibicao);
+    if (data) {
+      nomesPublicos.set(id,data.nome_exibicao);
+      fotosPublicas.set(id,data.avatar_url);
+    }
     aplicarNomeNaTela();
     atualizarFeed();
   } catch(erro) {
@@ -736,7 +765,7 @@ elemento("salvarPerfilBtn").onclick = async () => {
     if (error) throw error;
     if (usuarioAtual?.id !== id) return;
 
-    perfilAtual = {id,nome_exibicao:nome};
+    perfilAtual = {...(perfilAtual || {}),id,nome_exibicao:nome};
     nomesPublicos.set(id,nome);
     aplicarNomeNaTela();
     atualizarFeed();
@@ -746,6 +775,49 @@ elemento("salvarPerfilBtn").onclick = async () => {
     mensagemPerfil(
       "Não foi possível salvar: " + traduzirErro(erro)
     );
+  } finally {
+    botao.disabled = false;
+  }
+};
+
+elemento("enviarAvatarBtn").onclick = async () => {
+  const id = usuarioAtual?.id;
+  if (!id) { mostrarArea("conta"); return; }
+  const arquivo = elemento("arquivoAvatar").files?.[0];
+  if (!arquivo) { exibirMensagem("mensagemAvatar","Selecione uma foto primeiro."); return; }
+  const formatos = {"image/jpeg":"jpg","image/png":"png","image/webp":"webp"};
+  const extensao = formatos[arquivo.type];
+  if (!extensao) { exibirMensagem("mensagemAvatar","Use JPG, PNG ou WebP."); return; }
+  if (arquivo.size > 2 * 1024 * 1024) {
+    exibirMensagem("mensagemAvatar","A imagem deve ter até 2 MB."); return;
+  }
+  const botao = elemento("enviarAvatarBtn");
+  botao.disabled = true;
+  exibirMensagem("mensagemAvatar","Enviando sua foto...");
+  try {
+    // O primeiro diretório deve sempre ser o UUID do usuário, conforme políticas RLS.
+    const caminho = id + "/foto-perfil." + extensao;
+    const {error:erroUpload} = await db.storage.from("avatars")
+      .upload(caminho,arquivo,{upsert:true,contentType:arquivo.type,cacheControl:"60"});
+    if (erroUpload) throw erroUpload;
+    if (usuarioAtual?.id !== id) return;
+    const {data:publico} = db.storage.from("avatars").getPublicUrl(caminho);
+    const url = publico.publicUrl + "?v=" + Date.now();
+    // Salva na linha existente, preservando o nome de exibição.
+    const {data:salvo,error:erroPerfil} = await db.from("perfis")
+      .update({avatar_url:url}).eq("id",id).select("id,avatar_url").maybeSingle();
+    if (erroPerfil) throw erroPerfil;
+    if (!salvo) throw new Error("Perfil não encontrado. Salve seu nome no perfil e tente novamente.");
+    if (usuarioAtual?.id !== id) return;
+    perfilAtual = {...(perfilAtual || {}),avatar_url:url};
+    fotosPublicas.set(id,url);
+    aplicarNomeNaTela();
+    atualizarFeed();
+    elemento("arquivoAvatar").value = "";
+    exibirMensagem("mensagemAvatar","Foto salva! Ela já aparece no seu perfil.");
+    await carregarPublicacoes();
+  } catch(erro) {
+    exibirMensagem("mensagemAvatar","Não foi possível salvar a foto: " + traduzirErro(erro));
   } finally {
     botao.disabled = false;
   }
@@ -787,6 +859,7 @@ function formatarPost(linha) {
   return {
     id:"supabase-" + linha.id,
     autor:nomesPublicos.get(linha.user_id) || "Usuário ZUI",
+    foto:fotosPublicas.get(linha.user_id) || null,
     texto:linha.conteudo,
     data
   };
@@ -796,13 +869,14 @@ async function carregarNomesPublicos(linhas) {
   const ids = [...new Set(
     linhas.map(linha => linha.user_id).filter(Boolean)
   )];
-  if (!ids.length) return new Map();
+  if (!ids.length) { fotosPublicas = new Map(); return new Map(); }
 
   const {data,error} = await db.from("perfis")
-    .select("id,nome_exibicao")
+    .select("id,nome_exibicao,avatar_url")
     .in("id",ids);
 
   if (error) throw error;
+  fotosPublicas = new Map((data || []).map(perfil => [perfil.id,perfil.avatar_url]));
   return new Map(
     (data || []).map(perfil => [
       perfil.id,perfil.nome_exibicao
@@ -870,7 +944,7 @@ function criarPost(post) {
   autor.className = "autor";
   const avatar = document.createElement("div");
   avatar.className = "avatar";
-  avatar.textContent = post.autor.charAt(0).toUpperCase();
+  desenharAvatar(avatar,post.autor,post.foto);
 
   const info = document.createElement("div");
   const nome = document.createElement("strong");
