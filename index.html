@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#071832">
-<title>ZIRRAI — Descubra o novo!</title>
+<title>ZORMAI — Descobrindo o novo!</title>
 <style>
 :root {
   --azul:#071832;
@@ -239,8 +239,8 @@ label {display:block;font-weight:bold;font-size:14px}
 <body>
 <header>
   <div>
-    <div class="marca">ZIRRAI</div>
-    <div class="submarca">Descubra o novo!</div>
+    <div class="marca">ZORMAI</div>
+    <div class="submarca">Descobrindo o novo!</div>
   </div>
   <div class="topo-direito">
     <span id="statusConta">Visitante</span>
@@ -269,8 +269,8 @@ label {display:block;font-weight:bold;font-size:14px}
 <section id="inicio" class="area visivel">
   <div class="painel apresentacao">
     <img class="logo"
-      src="Logo%20futurista%20ZIRRAI%20em%20azul%20e%20dourado.png"
-      alt="ZIRRAI — Descubra o novo!">
+      src="Logo%20ZORMAI_%20Descobrindo%20o%20Novo.png"
+      alt="ZORMAI — Descobrindo o novo!">
     <p>Descubra. Compartilhe. Conecte-se.</p>
   </div>
 
@@ -282,7 +282,7 @@ label {display:block;font-weight:bold;font-size:14px}
     <div class="acoes">
       <span class="suave">✍️ Publicação de texto</span>
       <button id="publicarBtn" class="dourado">
-        Publicar no ZIRRAI
+        Publicar no ZORMAI
       </button>
     </div>
     <p class="aviso">
@@ -311,7 +311,7 @@ label {display:block;font-weight:bold;font-size:14px}
 
 <section id="publicar" class="area">
   <div class="painel">
-    <h2>➕ Publicar no ZIRRAI</h2>
+    <h2>➕ Publicar no ZORMAI</h2>
     <p>Compartilhe suas descobertas!</p>
     <button id="irPublicar" class="dourado">
       Escrever publicação
@@ -358,7 +358,7 @@ label {display:block;font-weight:bold;font-size:14px}
         <div id="mensagemAvatar" class="mensagem escondido" role="status" aria-live="polite"></div>
       </div>
       <label for="nomeExibicao">
-        Nome de exibição no ZIRRAI
+        Nome de exibição no ZORMAI
       </label>
       <input id="nomeExibicao" class="campo"
         type="text" maxlength="60"
@@ -387,7 +387,7 @@ label {display:block;font-weight:bold;font-size:14px}
 
 <section id="conta" class="area">
   <div class="painel">
-    <h2>🔐 Sua conta ZIRRAI</h2>
+    <h2>🔐 Sua conta ZORMAI</h2>
     <div id="formConta">
       <p class="suave">
         Cadastre-se gratuitamente com seu e-mail e senha.
@@ -436,7 +436,7 @@ label {display:block;font-weight:bold;font-size:14px}
     <span class="tag">#Criatividade</span>
   </div>
   <div class="painel">
-    <h3>💙 Bem-vindo ao ZIRRAI!</h3>
+    <h3>💙 Bem-vindo ao ZORMAI!</h3>
     <p class="suave">
       Um lugar para descobrir, aprender e compartilhar.
     </p>
@@ -448,7 +448,7 @@ label {display:block;font-weight:bold;font-size:14px}
 </div>
 
 <footer class="rodape">
-  ZIRRAI © 2026 — Descubra o novo!
+  ZORMAI © 2026 — Descobrindo o novo!
   <p>Versão experimental 1.5 — fotos de perfil</p>
 </footer>
 
@@ -476,13 +476,13 @@ let consultaPerfilAtual = 0;
 const exemplos = [
   {
     id:"exemplo1",
-    autor:"Equipe ZIRRAI",
-    texto:"Bem-vindo ao ZIRRAI! 💙💛\nUm espaço para descobrir, compartilhar e conectar pessoas.",
+    autor:"Equipe ZORMAI",
+    texto:"Bem-vindo ao ZORMAI! 💙💛\nUm espaço para descobrir, compartilhar e conectar pessoas.",
     data:"Publicação de exemplo"
   },
   {
     id:"exemplo2",
-    autor:"Comunidade ZIRRAI",
+    autor:"Comunidade ZORMAI",
     texto:"✨ Toda pessoa tem algo especial para ensinar. Compartilhe suas experiências e descobertas!",
     data:"Publicação de exemplo"
   }
@@ -584,7 +584,7 @@ elemento("cadastrarBtn").onclick = async () => {
     });
     if (error) throw error;
     mensagem(data.session
-      ? "Conta criada! Você já pode usar o ZIRRAI."
+      ? "Conta criada! Você já pode usar o ZORMAI."
       : "Solicitação recebida! Se necessário, confira seu e-mail de confirmação e a pasta de spam.");
     elemento("senha").value = "";
   } catch(erro) {
@@ -605,7 +605,7 @@ elemento("loginBtn").onclick = async () => {
       password:dados.senha
     });
     if (error) throw error;
-    mensagem("Bem-vindo ao ZIRRAI!");
+    mensagem("Bem-vindo ao ZORMAI!");
     elemento("senha").value = "";
     mostrarArea("inicio");
   } catch(erro) {
@@ -858,7 +858,7 @@ function formatarPost(linha) {
   }
   return {
     id:"supabase-" + linha.id,
-    autor:nomesPublicos.get(linha.user_id) || "Usuário ZIRRAI",
+    autor:nomesPublicos.get(linha.user_id) || "Usuário ZORMAI",
     foto:fotosPublicas.get(linha.user_id) || null,
     texto:linha.conteudo,
     data
@@ -896,7 +896,7 @@ async function carregarPublicacoes() {
     return;
   }
 
-  status.textContent = "Carregando publicações do ZIRRAI...";
+  status.textContent = "Carregando publicações do ZORMAI...";
 
   try {
     const {data,error} = await db
@@ -1005,10 +1005,10 @@ function criarPost(post) {
   compartilhar.textContent = "↗ Compartilhar";
   compartilhar.onclick = async () => {
     const texto = post.texto +
-      "\n\nZIRRAI — Descubra o novo!";
+      "\n\nZORMAI — Descobrindo o novo!";
     try {
       if (navigator.share) {
-        await navigator.share({title:"ZIRRAI",text:texto});
+        await navigator.share({title:"ZORMAI",text:texto});
       } else if (navigator.clipboard) {
         await navigator.clipboard.writeText(texto);
         alert("Texto copiado!");
@@ -1074,7 +1074,7 @@ elemento("publicarBtn").onclick = async () => {
   const botao = elemento("publicarBtn");
   const idUsuario = usuarioAtual.id;
   botao.disabled = true;
-  avisoPost("Publicando no ZIRRAI...");
+  avisoPost("Publicando no ZORMAI...");
 
   try {
     const {error} = await db.from("publicacoes")
