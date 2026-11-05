@@ -171,6 +171,16 @@ label {display:block;font-weight:bold;font-size:14px}
   padding:10px 13px;
   border-radius:10px;
 }
+/* Comentários compartilhados, preservando os botões existentes. */
+.comentarios-area {margin-top:14px;border-top:1px solid #ffffff22;padding-top:14px}
+.comentarios-area .campo {min-height:76px;margin:10px 0}
+.comentario-item {padding:11px 0;border-bottom:1px solid #ffffff16}
+.comentario-item:last-child {border-bottom:0}
+.comentario-item .autor {margin-bottom:6px}
+.comentario-item .avatar {width:32px;height:32px;font-size:13px}
+.comentario-item .conteudo {margin-left:44px}
+.comentario-acoes {display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.comentario-aviso {font-size:13px;color:var(--cinza);margin:9px 0}
 .botoes button.marcado {
   color:var(--ouro);
   border-color:var(--ouro);
@@ -449,7 +459,7 @@ label {display:block;font-weight:bold;font-size:14px}
 
 <footer class="rodape">
   ZORMAI © 2026 — Descobrindo o novo!
-  <p>Versão experimental 1.5 — fotos de perfil</p>
+  <p>Versão experimental 1.6 — comentários compartilhados</p>
 </footer>
 
 <script>
@@ -997,9 +1007,144 @@ function criarPost(post) {
 
   const comentar = document.createElement("button");
   comentar.textContent = "💬 Comentar";
-  comentar.onclick = () => {
-    alert("Comentários chegarão em uma próxima versão.");
+
+  // A tabela comentarios recebe apenas publicações reais do Supabase.
+  const idPublicacao = typeof post.id === "string" &&
+    /^supabase-\d+$/.test(post.id)
+    ? Number(post.id.substring(9)) : null;
+  const areaComentarios = document.createElement("section");
+  areaComentarios.className = "comentarios-area escondido";
+  areaComentarios.setAttribute("aria-label","Comentários da publicação");
+  let comentariosCarregados = false;
+  let carregandoComentarios = false;
+
+  const listaComentarios = document.createElement("div");
+  const avisoComentarios = document.createElement("p");
+  avisoComentarios.className = "comentario-aviso";
+  avisoComentarios.setAttribute("role","status");
+  const campoComentario = document.createElement("textarea");
+  campoComentario.className = "campo";
+  campoComentario.maxLength = 1000;
+  campoComentario.placeholder = "Escreva seu comentário (até 1000 caracteres)...";
+  campoComentario.setAttribute("aria-label","Escreva seu comentário");
+  const enviarComentario = document.createElement("button");
+  enviarComentario.className = "dourado";
+  enviarComentario.textContent = "Publicar comentário";
+
+  async function carregarComentarios() {
+    if (!idPublicacao || !usuarioAtual || carregandoComentarios) return;
+    const idSessao = usuarioAtual.id;
+    carregandoComentarios = true;
+    avisoComentarios.textContent = "Carregando comentários...";
+    try {
+      const {data,error} = await db.from("comentarios")
+        .select("id,created_at,conteudo,user_id")
+        .eq("publicacao_id",idPublicacao)
+        .order("created_at",{ascending:true})
+        .limit(100);
+      if (error) throw error;
+      if (usuarioAtual?.id !== idSessao) return;
+
+      const linhas = data || [];
+      const idsSemPerfil = [...new Set(linhas.map(c => c.user_id)
+        .filter(id => id && !nomesPublicos.has(id)))];
+      if (idsSemPerfil.length) {
+        const {data:perfis,error:erroPerfis} = await db.from("perfis")
+          .select("id,nome_exibicao,avatar_url").in("id",idsSemPerfil);
+        if (!erroPerfis && usuarioAtual?.id === idSessao) {
+          for (const perfil of perfis || []) {
+            nomesPublicos.set(perfil.id,perfil.nome_exibicao);
+            fotosPublicas.set(perfil.id,perfil.avatar_url);
+          }
+        }
+      }
+      if (usuarioAtual?.id !== idSessao) return;
+      listaComentarios.replaceChildren();
+      for (const c of linhas) {
+        const item = document.createElement("div");
+        item.className = "comentario-item";
+        const autorComentario = document.createElement("div");
+        autorComentario.className = "autor";
+        const fotoComentario = document.createElement("div");
+        fotoComentario.className = "avatar";
+        const nomeComentario = nomesPublicos.get(c.user_id) ||
+          (c.user_id === usuarioAtual?.id ? perfilAtual?.nome_exibicao : null) || "Usuário ZORMAI";
+        const urlFoto = fotosPublicas.get(c.user_id) ||
+          (c.user_id === usuarioAtual?.id ? perfilAtual?.avatar_url : null);
+        desenharAvatar(fotoComentario,nomeComentario,urlFoto);
+        const detalhes = document.createElement("div");
+        const nome = document.createElement("strong");
+        nome.textContent = nomeComentario;
+        const dataComentario = document.createElement("div");
+        dataComentario.className = "data";
+        const instante = new Date(c.created_at);
+        dataComentario.textContent = Number.isNaN(instante.getTime())
+          ? "" : instante.toLocaleString("pt-BR");
+        detalhes.append(nome,dataComentario);
+        autorComentario.append(fotoComentario,detalhes);
+        const textoComentario = document.createElement("div");
+        textoComentario.className = "conteudo";
+        textoComentario.textContent = c.conteudo || "";
+        item.append(autorComentario,textoComentario);
+        listaComentarios.append(item);
+      }
+      avisoComentarios.textContent = linhas.length
+        ? `Exibindo ${linhas.length} comentário(s) mais antigos primeiro (máximo de 100).`
+        : "Nenhum comentário ainda. Seja o primeiro!";
+      comentariosCarregados = true;
+    } catch(erro) {
+      avisoComentarios.textContent = "Não foi possível carregar comentários: " + traduzirErro(erro);
+    } finally {
+      carregandoComentarios = false;
+    }
+  }
+
+  comentar.onclick = async () => {
+    if (!usuarioAtual) {
+      mostrarArea("conta");
+      mensagem("Entre na sua conta para comentar.");
+      return;
+    }
+    if (!idPublicacao) {
+      alert("Comentários estão disponíveis nas publicações reais do ZORMAI.");
+      return;
+    }
+    const abrindo = areaComentarios.classList.contains("escondido");
+    areaComentarios.classList.toggle("escondido",!abrindo);
+    comentar.setAttribute("aria-expanded",String(abrindo));
+    if (abrindo && !comentariosCarregados) await carregarComentarios();
   };
+
+  enviarComentario.onclick = async () => {
+    if (!usuarioAtual || !idPublicacao) return;
+    const conteudoComentario = campoComentario.value.trim();
+    if (!conteudoComentario) {
+      avisoComentarios.textContent = "Escreva um comentário antes de publicar.";
+      return;
+    }
+    const idSessao = usuarioAtual.id;
+    enviarComentario.disabled = true;
+    avisoComentarios.textContent = "Publicando comentário...";
+    try {
+      const {error} = await db.from("comentarios").insert({
+        publicacao_id:idPublicacao,
+        user_id:idSessao,
+        conteudo:conteudoComentario
+      });
+      if (error) throw error;
+      if (usuarioAtual?.id !== idSessao) return;
+      campoComentario.value = "";
+      comentariosCarregados = false;
+      await carregarComentarios();
+    } catch(erro) {
+      avisoComentarios.textContent = "Não foi possível publicar: " + traduzirErro(erro) +
+        ". Seu texto foi mantido.";
+    } finally {
+      enviarComentario.disabled = false;
+    }
+  };
+
+  areaComentarios.append(avisoComentarios,listaComentarios,campoComentario,enviarComentario);
 
   const compartilhar = document.createElement("button");
   compartilhar.textContent = "↗ Compartilhar";
@@ -1023,7 +1168,7 @@ function criarPost(post) {
   };
 
   botoes.append(curtir,comentar,compartilhar);
-  artigo.append(autor,conteudo,botoes);
+  artigo.append(autor,conteudo,botoes,areaComentarios);
   return artigo;
 }
 
@@ -1104,6 +1249,7 @@ elemento("publicarBtn").onclick = async () => {
 
 // Não apaga publicações antigas do armazenamento local.
 // Curtidas continuam locais nesta versão.
+// Comentários reais são salvos em public.comentarios.
 // A segurança das tabelas depende das políticas RLS.
 
 db.auth.onAuthStateChange((_evento,sessao) => {
